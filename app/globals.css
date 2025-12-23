@@ -1,0 +1,30 @@
+@import "tailwindcss";
+
+:root {
+  --background: #F4F2DC;
+  --foreground: #1a1a1a;
+  --green: #657E66;
+  --cream: #F4F2DC;
+  --terracotta: #BA5F42;
+  --muted: #5a5a5a;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-green: var(--green);
+  --color-cream: var(--cream);
+  --color-terracotta: var(--terracotta);
+  --color-muted: var(--muted);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+}
+
+html {
+  scroll-behavior: smooth;
+}
