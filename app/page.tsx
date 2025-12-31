@@ -1,6 +1,7 @@
 "use client";
 
 import Image from "next/image";
+import Link from "next/link";
 import { useState, useRef } from "react";
 
 const CTA_LINK = "https://example.com"; // Substituir pelo link real
@@ -105,12 +106,30 @@ export default function Home() {
           />
         </audio>
 
-        {/* Sound Toggle Button */}
-        <button
-          onClick={toggleSound}
-          className="absolute top-6 right-6 z-20 flex items-center gap-2 rounded-full bg-white/20 backdrop-blur-sm px-4 py-2 text-white transition-all hover:bg-white/30"
-          aria-label={isSoundOn ? "Desativar som" : "Ativar som"}
-        >
+        {/* Header Buttons */}
+        <div className="absolute top-6 right-6 z-20 flex items-center gap-3">
+          <Link
+            href="/app"
+            className="flex items-center gap-2 rounded-full bg-white/20 backdrop-blur-sm px-4 py-2 text-white transition-all hover:bg-white/30"
+          >
+            <svg
+              width="18"
+              height="18"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="1.5"
+            >
+              <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" />
+              <circle cx="12" cy="7" r="4" />
+            </svg>
+            <span className="text-sm">Entrar</span>
+          </Link>
+          <button
+            onClick={toggleSound}
+            className="flex items-center gap-2 rounded-full bg-white/20 backdrop-blur-sm px-4 py-2 text-white transition-all hover:bg-white/30"
+            aria-label={isSoundOn ? "Desativar som" : "Ativar som"}
+          >
           {isSoundOn ? (
             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
               <path d="M11 5L6 9H2v6h4l5 4V5z" />
@@ -124,7 +143,8 @@ export default function Home() {
             </svg>
           )}
           <span className="text-sm">{isSoundOn ? "Som ligado" : "Som"}</span>
-        </button>
+          </button>
+        </div>
 
         {/* Overlay */}
         <div className="absolute inset-0 bg-black/40" />
