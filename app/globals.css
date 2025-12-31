@@ -28,3 +28,13 @@ body {
 html {
   scroll-behavior: smooth;
 }
+
+/* Cursor pointer para elementos interativos */
+button,
+a,
+[role="button"],
+input[type="submit"],
+input[type="button"],
+select {
+  cursor: pointer;
+}

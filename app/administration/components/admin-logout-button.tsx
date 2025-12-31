@@ -3,7 +3,7 @@
 import { createClient } from "@/lib/supabase/client";
 import { useRouter } from "next/navigation";
 
-export default function LogoutButton() {
+export default function AdminLogoutButton() {
   const router = useRouter();
   const supabase = createClient();
 
