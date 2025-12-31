@@ -4,7 +4,7 @@ import { NextResponse } from "next/server";
 export async function GET(request: Request) {
   const { searchParams, origin } = new URL(request.url);
   const code = searchParams.get("code");
-  const next = searchParams.get("next") ?? "/app";
+  const next = searchParams.get("next") ?? "/home";
 
   if (code) {
     const supabase = await createClient();
@@ -15,5 +15,5 @@ export async function GET(request: Request) {
   }
 
   // Redireciona para login em caso de erro
-  return NextResponse.redirect(`${origin}/app/login`);
+  return NextResponse.redirect(`${origin}/authentication/sign-in`);
 }

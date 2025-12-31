@@ -11,7 +11,7 @@ export default async function DashboardPage() {
   } = await supabase.auth.getUser();
 
   if (!user) {
-    redirect("/app/login");
+    redirect("/authentication/sign-in");
   }
 
   return (

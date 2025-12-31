@@ -22,7 +22,7 @@ export default function LoginPage() {
       email,
       options: {
         shouldCreateUser: false,
-        emailRedirectTo: `${window.location.origin}/app/auth/callback`,
+        emailRedirectTo: `${window.location.origin}/authentication/callback`,
       },
     });
 

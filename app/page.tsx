@@ -109,7 +109,7 @@ export default function Home() {
         {/* Header Buttons */}
         <div className="absolute top-6 right-6 z-20 flex items-center gap-3">
           <Link
-            href="/app"
+            href="/authentication/sign-in"
             className="flex items-center gap-2 rounded-full bg-white/20 backdrop-blur-sm px-4 py-2 text-white transition-all hover:bg-white/30"
           >
             <svg

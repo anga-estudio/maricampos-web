@@ -33,21 +33,20 @@ export async function updateSession(request: NextRequest) {
     data: { user },
   } = await supabase.auth.getUser();
 
-  // Proteger rotas /app/*
+  // Proteger rotas /home/*
   if (
     !user &&
-    request.nextUrl.pathname.startsWith("/app") &&
-    !request.nextUrl.pathname.startsWith("/app/login")
+    request.nextUrl.pathname.startsWith("/home")
   ) {
     const url = request.nextUrl.clone();
-    url.pathname = "/app/login";
+    url.pathname = "/authentication/sign-in";
     return NextResponse.redirect(url);
   }
 
   // Redirecionar usuário logado da página de login para o dashboard
-  if (user && request.nextUrl.pathname === "/app/login") {
+  if (user && request.nextUrl.pathname === "/authentication/sign-in") {
     const url = request.nextUrl.clone();
-    url.pathname = "/app";
+    url.pathname = "/home";
     return NextResponse.redirect(url);
   }
 
