@@ -1,7 +1,6 @@
 "use client";
 
 import Image from "next/image";
-import Link from "next/link";
 import { useState, useRef } from "react";
 
 const CTA_LINK = "https://example.com"; // Substituir pelo link real
@@ -81,7 +80,7 @@ export default function Home() {
   };
 
   return (
-    <div className="min-h-screen bg-cream text-foreground font-sans">
+    <div className="min-h-screen bg-background text-foreground font-sans">
       {/* Hero Section with Video Background */}
       <section className="relative flex min-h-screen flex-col items-center justify-center overflow-hidden">
         {/* Video Background */}
@@ -108,23 +107,6 @@ export default function Home() {
 
         {/* Header Buttons */}
         <div className="absolute top-6 right-6 z-20 flex items-center gap-3">
-          <Link
-            href="/authentication/sign-in"
-            className="flex items-center gap-2 rounded-full bg-white/20 backdrop-blur-sm px-4 py-2 text-white transition-all hover:bg-white/30"
-          >
-            <svg
-              width="18"
-              height="18"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              strokeWidth="1.5"
-            >
-              <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" />
-              <circle cx="12" cy="7" r="4" />
-            </svg>
-            <span className="text-sm">Entrar</span>
-          </Link>
           <button
             onClick={toggleSound}
             className="flex items-center gap-2 rounded-full bg-white/20 backdrop-blur-sm px-4 py-2 text-white transition-all hover:bg-white/30"
@@ -142,7 +124,7 @@ export default function Home() {
               <line x1="17" y1="9" x2="23" y2="15" />
             </svg>
           )}
-          <span className="text-sm">{isSoundOn ? "Som ligado" : "Som"}</span>
+          <span className="text-sm">{isSoundOn ? "Som ligado" : "Som desligado"}</span>
           </button>
         </div>
 
@@ -152,10 +134,10 @@ export default function Home() {
         {/* Content */}
         <div className="relative z-10 px-6 text-center text-white">
           <Image
-            src="/logo.svg"
+            src="/logo-white.svg"
             alt="Silencie"
-            width={320}
-            height={81}
+            width={480}
+            height={121}
             priority
             className="mx-auto mb-12"
           />
@@ -165,7 +147,7 @@ export default function Home() {
           </p>
           <a
             href={CTA_LINK}
-            className="inline-block rounded-full bg-terracotta px-8 py-4 text-lg font-medium text-white transition-all hover:bg-terracotta/90"
+            className="inline-block rounded-full bg-green px-8 py-4 text-lg font-medium text-white transition-all hover:bg-green/90"
           >
             Quero participar
           </a>
@@ -212,6 +194,36 @@ export default function Home() {
               fill
               className="object-cover"
             />
+          </div>
+        </div>
+      </section>
+
+      {/* Instructor Section - Mari Campos */}
+      <section className="mx-auto max-w-4xl px-6 py-24">
+        <div className="grid gap-12 md:grid-cols-2 md:items-center">
+          <div className="relative aspect-[4/5] overflow-hidden rounded-2xl">
+            <Image
+              src="/photos/mari.webp"
+              alt="Mari Campos"
+              fill
+              className="object-cover"
+            />
+          </div>
+          <div>
+            <h2 className="mb-8 text-3xl font-light tracking-tight text-green">
+              Conheça Mari Campos
+            </h2>
+            <div className="space-y-6 text-lg leading-relaxed text-muted">
+              <p>
+                Mari Campos é instrutora de meditação e facilitadora de práticas contemplativas.
+                Há mais de uma década, dedica-se ao estudo e à transmissão de técnicas que
+                promovem o autoconhecimento e a paz interior.
+              </p>
+              <p>
+                Com uma abordagem acolhedora e profunda, Mari guia você nesta jornada de
+                reconexão consigo mesmo, criando um espaço seguro para o silêncio florescer.
+              </p>
+            </div>
           </div>
         </div>
       </section>
@@ -320,6 +332,28 @@ export default function Home() {
           height={30}
           className="mx-auto mb-4"
         />
+        <a
+          href="https://www.instagram.com/maricamposyogi"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="inline-flex items-center justify-center mb-4 text-muted hover:text-green transition-colors"
+          aria-label="Instagram de Mari Campos"
+        >
+          <svg
+            width="24"
+            height="24"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="1.5"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+          >
+            <rect x="2" y="2" width="20" height="20" rx="5" ry="5" />
+            <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" />
+            <line x1="17.5" y1="6.5" x2="17.51" y2="6.5" />
+          </svg>
+        </a>
         <p className="text-sm text-muted">
           Silencie. Todos os direitos reservados.
         </p>
