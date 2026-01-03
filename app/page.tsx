@@ -110,13 +110,13 @@ function FAQItem({
   const [isOpen, setIsOpen] = useState(false);
 
   return (
-    <div className={isLast ? "" : "border-b border-green/20"}>
+    <div className={isLast ? "" : "border-b border-white/20"}>
       <button
         onClick={() => setIsOpen(!isOpen)}
         className="flex w-full items-center justify-between py-6 text-left"
       >
-        <span className="text-lg font-medium text-green"><BoldSilencie>{question}</BoldSilencie></span>
-        <span className="ml-4 text-2xl text-green">
+        <span className="text-lg font-medium text-white"><BoldSilencie>{question}</BoldSilencie></span>
+        <span className="ml-4 text-2xl text-white">
           {isOpen ? "−" : "+"}
         </span>
       </button>
@@ -125,7 +125,7 @@ function FAQItem({
           isOpen ? "max-h-96 pb-6" : "max-h-0"
         }`}
       >
-        <p className="text-green leading-relaxed"><BoldSilencie>{answer}</BoldSilencie></p>
+        <p className="text-white/90 leading-relaxed"><BoldSilencie>{answer}</BoldSilencie></p>
       </div>
     </div>
   );
@@ -432,9 +432,9 @@ export default function Home() {
       <div className="border-t border-green/10" />
 
       {/* FAQ Section */}
-      <section className="py-24">
+      <section className="py-24 bg-green">
         <div className="mx-auto max-w-3xl px-6">
-          <h2 className="mb-12 text-center text-3xl font-light tracking-tight text-green">
+          <h2 className="mb-12 text-center text-3xl font-light tracking-tight text-white">
             Perguntas frequentes
           </h2>
           <div>
