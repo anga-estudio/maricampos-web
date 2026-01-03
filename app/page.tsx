@@ -49,45 +49,49 @@ const faqs = [
 
 const programContent = [
   {
-    title: "Núcleo do Silencie",
+    title: "Meditação guiada",
     items: [
-      "Programa de meditação guiada de 21 dias",
-      "Práticas focadas em: presença, silêncio mental, autorresponsabilidade, consciência emocional e relação com pensamentos",
+      "Vinte e um dias de meditação guiada",
+      "Práticas diárias, progressivas e acessíveis",
+      "Acesso simples, direto no celular",
+      "Acompanhamento e condução cuidadosa ao longo da jornada",
     ],
     image: "/photos/card-1.webp",
   },
   {
-    title: "Encontros ao vivo",
+    title: "Encontros e Yoga",
     items: [
-      "Dois encontros online ao vivo com a Mari Campos",
-      "Espaço para aprofundar temas como: presença, respiração e sustentação da prática",
+      "Dois encontros ao vivo com a mentora para aprofundar presença, respiração e sustentação da prática",
+      "Uma aula de yoga presencial",
+      "Uma aula de yoga online para quem não puder estar presencialmente",
     ],
     image: "/photos/card-2.png",
   },
   {
-    title: "Yoga",
+    title: "Bônus exclusivos",
     items: [
-      "Uma aula de yoga presencial",
-      "Uma aula de yoga online",
+      "Workshop exclusivo de Pranayama (respiração consciente aplicada à vida real)",
+      "Aula extra com nutricionista convidada sobre comida limpa, alimentação consciente e inflamação",
     ],
     image: "/photos/card-3.png",
   },
   {
-    title: "Comunidade",
+    title: "Premiações",
     items: [
-      "Acesso a uma comunidade exclusiva no WhatsApp",
+      "Reconhecimento para quem se comprometer com o processo",
+      "As pessoas mais engajadas concorrem a prêmios especiais",
     ],
     image: "/photos/card-4.png",
   },
 ];
 
 const rewards: { text: string; bold?: string; suffix?: string }[] = [
-  { text: "Uma vaga de mentoria com Mari Campos" },
-  { text: "Uma tiragem de carta (Oráculo)" },
-  { text: "Um mês de aula de yoga" },
-  { text: "Almofada de meditação" },
-  { text: "Kit de produtos naturais e suplementos" },
-  { text: "Uma vaga no programa de emagrecimento consciente ", bold: "Desinflame", suffix: " (Mari Ulhoa)" },
+  { text: "Uma vaga de mentoria individual com Mari Campos" },
+  { text: "Uma tiragem de carta de oráculo" },
+  { text: "Um mês de aulas de yoga" },
+  { text: "Uma almofada de meditação" },
+  { text: "Um kit de produtos naturais e suplementos" },
+  { text: "Uma vaga no programa ", bold: "Desinflame", suffix: ", da nutricionista Mari Ulhoa (programa de emagrecimento consciente)" },
 ];
 
 function FAQItem({
@@ -107,7 +111,7 @@ function FAQItem({
         onClick={() => setIsOpen(!isOpen)}
         className="flex w-full items-center justify-between py-6 text-left"
       >
-        <span className="text-lg font-medium text-foreground"><BoldSilencie>{question}</BoldSilencie></span>
+        <span className="text-lg font-medium text-green"><BoldSilencie>{question}</BoldSilencie></span>
         <span className="ml-4 text-2xl text-green">
           {isOpen ? "−" : "+"}
         </span>
@@ -117,7 +121,7 @@ function FAQItem({
           isOpen ? "max-h-96 pb-6" : "max-h-0"
         }`}
       >
-        <p className="text-muted leading-relaxed"><BoldSilencie>{answer}</BoldSilencie></p>
+        <p className="text-green leading-relaxed"><BoldSilencie>{answer}</BoldSilencie></p>
       </div>
     </div>
   );
@@ -139,7 +143,7 @@ export default function Home() {
   };
 
   return (
-    <div className="min-h-screen bg-background text-foreground font-sans">
+    <div className="min-h-screen bg-background text-green font-sans">
       {/* Hero Section with Video Background */}
       <section className="relative flex min-h-screen flex-col items-center justify-center overflow-hidden">
         {/* Video Background */}
@@ -236,12 +240,9 @@ export default function Home() {
             <h2 className="mb-8 text-3xl font-light tracking-tight text-green">
               O que é o <strong>Silencie</strong>?
             </h2>
-            <div className="space-y-6 text-lg leading-relaxed text-muted">
+            <div className="space-y-6 text-lg leading-relaxed text-green">
               <p>
                 O <strong>Silencie</strong> é um programa de meditação guiada de 21 dias, criado para pessoas que sentem a mente acelerada, cansada e sobrecarregada, e querem aprender, na prática, a desligar o piloto automático e criar mais clareza emocional no dia a dia.
-              </p>
-              <p>
-                O <strong>Silencie</strong> cabe na vida real. É feito para ser praticado todos os dias, sem perfeccionismo.
               </p>
             </div>
           </div>
@@ -259,27 +260,32 @@ export default function Home() {
       {/* Training Benefits Section */}
       <section className="py-24">
         <div className="mx-auto max-w-4xl px-6">
-          <h2 className="mb-12 text-center text-3xl font-light tracking-tight text-green">
-            Um treino diário, simples e guiado
+          <h2 className="mb-4 text-center text-3xl font-light tracking-tight text-green">
+            O que você recebe no <strong>Silencie</strong>
           </h2>
-          <div className="flex flex-col gap-6 max-w-md mx-auto">
+          <p className="mb-12 text-center text-green max-w-2xl mx-auto">
+            Uma experiência completa de presença ao longo de vinte e um dias
+          </p>
+          <div className="flex flex-col gap-6 max-w-lg mx-auto">
             {[
-              "Acalmar a mente",
-              "Lidar melhor com pensamentos e emoções",
-              "Sair da ansiedade constante",
-              "Fortalecer a presença",
-              "Criar um espaço interno mais estável",
+              "Acesso ao programa de meditação guiada de vinte e um dias",
+              "Práticas diárias organizadas e progressivas",
+              "Dois encontros online ao vivo com a mentora",
+              "Uma aula de yoga presencial e uma online",
+              "Workshop bônus de Pranayama (respiração)",
+              "Aula bônus com nutricionista (alimentação consciente)",
+              "Participação nas premiações por comprometimento",
             ].map((item, index) => (
               <div key={item} className="flex items-center gap-4">
                 <span className="w-8 h-8 rounded-full bg-green/10 flex items-center justify-center text-green text-sm font-medium">
                   {index + 1}
                 </span>
-                <span className="text-lg text-muted">{item}</span>
+                <span className="text-lg text-green">{item}</span>
               </div>
             ))}
           </div>
           <div className="mt-12 text-center">
-            <p className="text-lg text-muted mb-4">Mesmo que você:</p>
+            <p className="text-lg text-green mb-4">Mesmo que você:</p>
             <div className="flex flex-wrap justify-center gap-4">
               {[
                 "Nunca tenha meditado",
@@ -298,22 +304,26 @@ export default function Home() {
       {/* For Who Section */}
       <section className="mx-auto max-w-4xl px-6 py-24">
         <h2 className="mb-12 text-center text-3xl font-light tracking-tight text-green">
-          Para quem é o <strong>Silencie</strong>
+          Um treino diário, simples e guiado
         </h2>
         <div className="grid gap-4 md:grid-cols-2">
           {[
-            "Sente a mente acelerada e cansada",
-            "Tem dificuldade de manter constância em práticas de autocuidado",
-            "Já fez cursos, jornadas ou processos, mas sente que 'não sustenta'",
-            "Nunca meditou, mas sente que precisa aprender a silenciar por dentro",
-            "Quer criar uma base emocional e mental mais estável",
-            "Quer reduzir ruído interno, ruminação e autocrítica",
-            "Está sempre com o corpo cansado e desconectado",
-            "Está sempre se martirizando com comparação, culpa e excesso de controle",
+            "Desacelerar o barulho da mente que nunca para e te deixa exausta",
+            "Sair do modo alerta constante, onde o corpo vive tensionado e reagindo a tudo",
+            "Dar clareza pra pensamentos embaralhados, pra você conseguir finalmente se ouvir",
+            "Soltar o peso emocional acumulado — o que você sente, pensa e nem sabe nomear",
+            "Acalmar a irritação e a ansiedade, que viram sua companhia diária sem você querer",
+            "Construir presença, quando tudo em volta parece te puxar pra mil direções",
+            "Criar espaço interno, pra parar de viver só reagindo e começar a escolher",
+            "Reconstruir o seu centro, pra que o caos de fora não vire caos dentro",
+            "Fortalecer sua estabilidade emocional, pra parar de oscilar entre euforia e exaustão",
+            "Aprender a lidar com a mente que divaga o tempo todo (a famosa \"mente macaco\")",
+            "Acessar descanso de verdade, não só sono — descanso no corpo, na mente, no emocional",
+            "Se sentir em casa dentro de você, mesmo depois de anos vivendo no automático",
           ].map((item) => (
-            <div key={item} className="flex items-center gap-3 p-4 rounded-lg border border-green/20">
-              <span className="text-green">•</span>
-              <span className="text-muted">{item}</span>
+            <div key={item} className="flex items-start gap-3 p-4">
+              <span className="text-green mt-1">•</span>
+              <span className="text-green">{item}</span>
             </div>
           ))}
         </div>
@@ -322,9 +332,12 @@ export default function Home() {
       {/* Program Content Section */}
       <section className="py-24">
         <div className="mx-auto max-w-4xl px-6">
-          <h2 className="mb-12 text-center text-3xl font-light tracking-tight text-green">
-            O que tem no programa
+          <h2 className="mb-4 text-center text-3xl font-light tracking-tight text-green">
+            Durante os vinte e um dias do <strong>Silencie</strong>
           </h2>
+          <p className="mb-12 text-center text-green max-w-2xl mx-auto">
+            Você vai participar de uma experiência completa de presença, que inclui:
+          </p>
           <div className="grid gap-8 md:grid-cols-2">
             {programContent.map((section) => (
               <div key={section.title} className="relative rounded-2xl overflow-hidden min-h-[280px]">
@@ -367,9 +380,9 @@ export default function Home() {
             <h2 className="mb-8 text-3xl font-light tracking-tight text-green">
               Quem vai te guiar?
             </h2>
-            <div className="space-y-6 text-lg leading-relaxed text-muted">
+            <div className="space-y-6 text-lg leading-relaxed text-green">
               <p>
-                <strong className="text-foreground">Mari Campos</strong> é professora de yoga e meditação e facilitadora de processos de autoconhecimento.
+                <strong className="text-green">Mari Campos</strong> é professora de yoga e meditação e facilitadora de processos de autoconhecimento.
               </p>
               <p>
                 Há mais de uma década, dedica-se ao estudo, à prática e à transmissão de técnicas de meditação, yoga, respiração consciente e presença, conduzindo alunos e jornadas no Brasil e no exterior.
@@ -385,20 +398,20 @@ export default function Home() {
       {/* Rewards Section */}
       <section className="py-24 border-b border-green/10">
         <div className="mx-auto max-w-4xl px-6">
-          <p className="text-center text-sm uppercase tracking-widest text-green/60 mb-4">Bônus exclusivos</p>
+          <p className="text-center text-sm uppercase tracking-widest text-green/60 mb-4">Premiações por comprometimento</p>
           <h2 className="mb-6 text-center text-3xl font-light tracking-tight text-green">
-            O que você também recebe
+            Reconhecimento para quem se comprometer
           </h2>
-          <p className="mb-12 text-center text-muted max-w-2xl mx-auto">
-            Além do programa de 21 dias, quem se comprometer com a prática concorre a prêmios especiais ao longo da jornada.
+          <p className="mb-12 text-center text-green max-w-2xl mx-auto">
+            Durante os vinte e um dias, vamos reconhecer quem realmente se comprometer com o processo. As pessoas mais engajadas concorrem a:
           </p>
           <div className="grid gap-6 md:grid-cols-2 items-stretch">
             {rewards.map((reward, index) => (
               <div key={index} className="flex items-center gap-4 p-4 rounded-lg border border-green/20 bg-white min-h-[72px]">
                 <span className="flex-shrink-0 w-10 h-10 rounded-full bg-green/10 flex items-center justify-center">
-                  <span className="text-green">✦</span>
+                  <span className="text-green text-lg">✦</span>
                 </span>
-                <span className="text-foreground">
+                <span className="text-green">
                   {reward.text}
                   {reward.bold && <strong>{reward.bold}</strong>}
                   {reward.suffix}
@@ -441,7 +454,7 @@ export default function Home() {
           <h2 className="mb-6 text-3xl font-light tracking-tight text-green md:text-4xl">
             Pronto para o <strong>Silencie</strong>?
           </h2>
-          <p className="mb-12 text-lg text-muted">
+          <p className="mb-12 text-lg text-green">
             Dê o primeiro passo em direção a uma vida mais presente e serena.
           </p>
           <a
@@ -468,7 +481,7 @@ export default function Home() {
           href="https://www.instagram.com/maricamposyogi"
           target="_blank"
           rel="noopener noreferrer"
-          className="inline-flex items-center justify-center mb-4 text-muted hover:text-green transition-colors"
+          className="inline-flex items-center justify-center mb-4 text-green hover:text-green/80 transition-colors"
           aria-label="Instagram de Mari Campos"
         >
           <svg
@@ -486,7 +499,7 @@ export default function Home() {
             <line x1="17.5" y1="6.5" x2="17.51" y2="6.5" />
           </svg>
         </a>
-        <p className="text-sm text-muted">
+        <p className="text-sm text-green">
           <strong>Silencie</strong>. Todos os direitos reservados.
         </p>
       </footer>

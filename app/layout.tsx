@@ -124,7 +124,7 @@ export default function RootLayout({
         <meta name="apple-mobile-web-app-capable" content="yes" />
         <meta name="apple-mobile-web-app-status-bar-style" content="default" />
         <link rel="canonical" href="https://silencie.com.br" />
-        {/* Google Analytics */}
+        {/* Google Analytics with Enhanced Tracking */}
         <script async src="https://www.googletagmanager.com/gtag/js?id=G-FR56MV1RP0" />
         <script
           dangerouslySetInnerHTML={{
@@ -132,7 +132,82 @@ export default function RootLayout({
               window.dataLayer = window.dataLayer || [];
               function gtag(){dataLayer.push(arguments);}
               gtag('js', new Date());
-              gtag('config', 'G-FR56MV1RP0');
+              gtag('config', 'G-FR56MV1RP0', {
+                page_title: document.title,
+                page_location: window.location.href,
+                send_page_view: true
+              });
+
+              // Track scroll depth
+              var scrollDepths = [25, 50, 75, 100];
+              var scrollDepthsReached = [];
+              window.addEventListener('scroll', function() {
+                var scrollPercent = Math.round((window.scrollY / (document.documentElement.scrollHeight - window.innerHeight)) * 100);
+                scrollDepths.forEach(function(depth) {
+                  if (scrollPercent >= depth && scrollDepthsReached.indexOf(depth) === -1) {
+                    scrollDepthsReached.push(depth);
+                    gtag('event', 'scroll_depth', {
+                      event_category: 'engagement',
+                      event_label: depth + '%',
+                      value: depth
+                    });
+                  }
+                });
+              });
+
+              // Track time on page
+              var timeOnPage = 0;
+              setInterval(function() {
+                timeOnPage += 30;
+                if (timeOnPage === 30 || timeOnPage === 60 || timeOnPage === 180 || timeOnPage === 300) {
+                  gtag('event', 'time_on_page', {
+                    event_category: 'engagement',
+                    event_label: timeOnPage + ' seconds',
+                    value: timeOnPage
+                  });
+                }
+              }, 30000);
+
+              // Track CTA clicks (WhatsApp)
+              document.addEventListener('click', function(e) {
+                var target = e.target.closest('a');
+                if (target && target.href && target.href.includes('wa.me')) {
+                  gtag('event', 'whatsapp_click', {
+                    event_category: 'conversion',
+                    event_label: target.textContent.trim(),
+                    value: 1
+                  });
+                  gtag('event', 'conversion', {
+                    send_to: 'G-FR56MV1RP0',
+                    event_category: 'lead',
+                    event_label: 'WhatsApp CTA'
+                  });
+                }
+              });
+
+              // Track Instagram click
+              document.addEventListener('click', function(e) {
+                var target = e.target.closest('a');
+                if (target && target.href && target.href.includes('instagram.com')) {
+                  gtag('event', 'instagram_click', {
+                    event_category: 'social',
+                    event_label: 'Instagram Profile',
+                    value: 1
+                  });
+                }
+              });
+
+              // Track FAQ interactions
+              document.addEventListener('click', function(e) {
+                var target = e.target.closest('button');
+                if (target && target.closest('[class*="border-green"]')) {
+                  var questionText = target.textContent.trim().substring(0, 50);
+                  gtag('event', 'faq_click', {
+                    event_category: 'engagement',
+                    event_label: questionText
+                  });
+                }
+              });
             `,
           }}
         />
