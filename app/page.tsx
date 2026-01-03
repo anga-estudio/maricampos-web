@@ -312,7 +312,7 @@ export default function Home() {
       <section className="py-24">
         <div className="mx-auto max-w-4xl px-6">
           <h2 className="mb-12 text-center text-3xl font-light tracking-tight text-green">
-            Durante os 21 dias do <strong>Silencie</strong>
+            Durante os 21 dias do <strong>Silencie</strong> você vai receber
           </h2>
           <div className="grid gap-8 md:grid-cols-2">
             {programContent.map((section) => (
@@ -332,8 +332,34 @@ export default function Home() {
         </div>
       </section>
 
+      {/* Rewards Section */}
+      <section className="pb-24 border-b border-green/10">
+        <div className="mx-auto max-w-4xl px-6">
+          <h2 className="mb-6 text-center text-3xl font-light tracking-tight text-green">
+            Premiações por comprometimento
+          </h2>
+          <p className="mb-12 text-center text-green max-w-2xl mx-auto">
+            Durante os 21 dias, vamos reconhecer quem realmente se comprometer com o processo. As pessoas mais engajadas ganham:
+          </p>
+          <div className="grid gap-6 md:grid-cols-2 md:grid-rows-3">
+            {rewards.map((reward, index) => (
+              <div key={index} className="flex items-center gap-4 p-5 rounded-lg bg-white">
+                <span className="flex-shrink-0 w-10 h-10 rounded-full bg-green/10 flex items-center justify-center">
+                  <span className="text-green text-lg">✦</span>
+                </span>
+                <span className="text-green">
+                  {reward.text}
+                  {reward.bold && <strong>{reward.bold}</strong>}
+                  {reward.suffix}
+                </span>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* Even If Section */}
-      <section className="pb-24">
+      <section className="py-24">
         <div className="mx-auto max-w-4xl px-6">
           <div className="text-center">
             <p className="text-lg text-green mb-4">Mesmo que você:</p>
@@ -376,32 +402,6 @@ export default function Home() {
               <div key={item} className="flex items-start gap-3 p-4">
                 <span className="text-white/80 mt-1">•</span>
                 <span className="text-white/90">{item}</span>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Rewards Section */}
-      <section className="py-24 border-b border-green/10">
-        <div className="mx-auto max-w-4xl px-6">
-          <h2 className="mb-6 text-center text-3xl font-light tracking-tight text-green">
-            Premiações por comprometimento
-          </h2>
-          <p className="mb-12 text-center text-green max-w-2xl mx-auto">
-            Durante os 21 dias, vamos reconhecer quem realmente se comprometer com o processo. As pessoas mais engajadas ganham:
-          </p>
-          <div className="grid gap-6 md:grid-cols-2 md:grid-rows-3">
-            {rewards.map((reward, index) => (
-              <div key={index} className="flex items-center gap-4 p-5 rounded-lg border border-green/20 bg-white">
-                <span className="flex-shrink-0 w-10 h-10 rounded-full bg-green/10 flex items-center justify-center">
-                  <span className="text-green text-lg">✦</span>
-                </span>
-                <span className="text-green">
-                  {reward.text}
-                  {reward.bold && <strong>{reward.bold}</strong>}
-                  {reward.suffix}
-                </span>
               </div>
             ))}
           </div>
