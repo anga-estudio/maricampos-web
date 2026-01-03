@@ -79,14 +79,6 @@ const programContent = [
     ],
     image: "/photos/card-3.png",
   },
-  {
-    title: "Premiações",
-    items: [
-      "Reconhecimento para quem se comprometer com o processo",
-      "As pessoas mais engajadas ganharão prêmios especiais",
-    ],
-    image: "/photos/card-4.png",
-  },
 ];
 
 const rewards: { text: string; bold?: string; suffix?: string }[] = [
@@ -310,11 +302,11 @@ export default function Home() {
 
       {/* Program Content Section */}
       <section className="py-24">
-        <div className="mx-auto max-w-4xl px-6">
+        <div className="mx-auto max-w-6xl px-6">
           <h2 className="mb-12 text-center text-3xl font-light tracking-tight text-green">
             Durante os 21 dias do <strong>Silencie</strong> você vai receber
           </h2>
-          <div className="grid gap-8 md:grid-cols-2">
+          <div className="grid gap-8 md:grid-cols-3">
             {programContent.map((section) => (
               <div key={section.title} className="rounded-2xl border border-green/20 p-8">
                 <h3 className="mb-4 text-xl font-medium text-green">{section.title}</h3>
@@ -358,26 +350,6 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Even If Section */}
-      <section className="py-24">
-        <div className="mx-auto max-w-4xl px-6">
-          <div className="text-center">
-            <p className="text-lg text-green mb-4">Mesmo que você:</p>
-            <div className="flex flex-wrap justify-center gap-4">
-              {[
-                "Nunca tenha meditado",
-                `Ache que "não consegue parar a cabeça"`,
-                "Tenha uma rotina corrida",
-              ].map((item) => (
-                <span key={item} className="rounded-full bg-green/10 px-4 py-2 text-sm text-green">
-                  {item}
-                </span>
-              ))}
-            </div>
-          </div>
-        </div>
-      </section>
-
       {/* For Who Section */}
       <section className="py-24 bg-green">
         <div className="mx-auto max-w-4xl px-6">
@@ -408,8 +380,28 @@ export default function Home() {
         </div>
       </section>
 
+      {/* Even If Section */}
+      <section className="py-24">
+        <div className="mx-auto max-w-4xl px-6">
+          <div className="text-center">
+            <p className="text-lg text-green mb-4">Mesmo que você:</p>
+            <div className="flex flex-wrap justify-center gap-4">
+              {[
+                "Nunca tenha meditado",
+                `Ache que "não consegue parar a cabeça"`,
+                "Tenha uma rotina corrida",
+              ].map((item) => (
+                <span key={item} className="rounded-full bg-green/10 px-4 py-2 text-sm text-green">
+                  {item}
+                </span>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* Instructor Section - Mari Campos */}
-      <section className="mx-auto max-w-4xl px-6 py-24">
+      <section className="mx-auto max-w-4xl px-6 pt-12 pb-24">
         <div className="grid gap-12 md:grid-cols-2 md:items-center">
           <div className="relative aspect-[4/5] overflow-hidden rounded-2xl">
             <Image
