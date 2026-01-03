@@ -45,6 +45,10 @@ const faqs = [
     question: "Se eu perder um dia, atrapalha o processo?",
     answer: "Não. Você pode retomar no dia seguinte e seguir no seu ritmo.",
   },
+  {
+    question: "Já tentei meditar antes e não consegui. Por que dessa vez seria diferente?",
+    answer: "Porque você não estará sozinha. Terá um guia experiente, uma comunidade ativa e uma jornada estruturada de 21 dias para criar o hábito de verdade.",
+  },
 ];
 
 const programContent = [
@@ -302,30 +306,32 @@ export default function Home() {
       </section>
 
       {/* For Who Section */}
-      <section className="mx-auto max-w-4xl px-6 py-24">
-        <h2 className="mb-12 text-center text-3xl font-light tracking-tight text-green">
-          Um treino diário, simples e guiado
-        </h2>
-        <div className="grid gap-4 md:grid-cols-2">
-          {[
-            "Desacelerar o barulho da mente que nunca para e te deixa exausta",
-            "Sair do modo alerta constante, onde o corpo vive tensionado e reagindo a tudo",
-            "Dar clareza pra pensamentos embaralhados, pra você conseguir finalmente se ouvir",
-            "Soltar o peso emocional acumulado — o que você sente, pensa e nem sabe nomear",
-            "Acalmar a irritação e a ansiedade, que viram sua companhia diária sem você querer",
-            "Construir presença, quando tudo em volta parece te puxar pra mil direções",
-            "Criar espaço interno, pra parar de viver só reagindo e começar a escolher",
-            "Reconstruir o seu centro, pra que o caos de fora não vire caos dentro",
-            "Fortalecer sua estabilidade emocional, pra parar de oscilar entre euforia e exaustão",
-            "Aprender a lidar com a mente que divaga o tempo todo (a famosa \"mente macaco\")",
-            "Acessar descanso de verdade, não só sono — descanso no corpo, na mente, no emocional",
-            "Se sentir em casa dentro de você, mesmo depois de anos vivendo no automático",
-          ].map((item) => (
-            <div key={item} className="flex items-start gap-3 p-4">
-              <span className="text-green mt-1">•</span>
-              <span className="text-green">{item}</span>
-            </div>
-          ))}
+      <section className="py-24" style={{ backgroundColor: '#1b4965' }}>
+        <div className="mx-auto max-w-4xl px-6">
+          <h2 className="mb-12 text-center text-3xl font-light tracking-tight text-white">
+            Um treino diário, simples e guiado
+          </h2>
+          <div className="grid gap-4 md:grid-cols-2">
+            {[
+              "Desacelerar o barulho da mente que nunca para e te deixa exausta",
+              "Sair do modo alerta constante, onde o corpo vive tensionado e reagindo a tudo",
+              "Dar clareza pra pensamentos embaralhados, pra você conseguir finalmente se ouvir",
+              "Soltar o peso emocional acumulado — o que você sente, pensa e nem sabe nomear",
+              "Acalmar a irritação e a ansiedade, que viram sua companhia diária sem você querer",
+              "Construir presença, quando tudo em volta parece te puxar pra mil direções",
+              "Criar espaço interno, pra parar de viver só reagindo e começar a escolher",
+              "Reconstruir o seu centro, pra que o caos de fora não vire caos dentro",
+              "Fortalecer sua estabilidade emocional, pra parar de oscilar entre euforia e exaustão",
+              "Aprender a lidar com a mente que divaga o tempo todo (a famosa \"mente macaco\")",
+              "Acessar descanso de verdade, não só sono — descanso no corpo, na mente, no emocional",
+              "Se sentir em casa dentro de você, mesmo depois de anos vivendo no automático",
+            ].map((item) => (
+              <div key={item} className="flex items-start gap-3 p-4">
+                <span className="text-white/80 mt-1">•</span>
+                <span className="text-white/90">{item}</span>
+              </div>
+            ))}
+          </div>
         </div>
       </section>
 
@@ -340,25 +346,16 @@ export default function Home() {
           </p>
           <div className="grid gap-8 md:grid-cols-2">
             {programContent.map((section) => (
-              <div key={section.title} className="relative rounded-2xl overflow-hidden min-h-[280px]">
-                <Image
-                  src={section.image}
-                  alt={section.title}
-                  fill
-                  className="object-cover"
-                />
-                <div className="absolute inset-0 bg-black/50" />
-                <div className="relative z-10 p-8 h-full flex flex-col justify-end">
-                  <h3 className="mb-4 text-xl font-medium text-white">{section.title}</h3>
-                  <ul className="space-y-3">
-                    {section.items.map((item) => (
-                      <li key={item} className="flex items-start gap-3 text-white/90">
-                        <span className="text-white">•</span>
-                        <span>{item}</span>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
+              <div key={section.title} className="rounded-2xl border border-green/20 p-8">
+                <h3 className="mb-4 text-xl font-medium text-green">{section.title}</h3>
+                <ul className="space-y-3">
+                  {section.items.map((item) => (
+                    <li key={item} className="flex items-start gap-3 text-green">
+                      <span className="text-green">•</span>
+                      <span>{item}</span>
+                    </li>
+                  ))}
+                </ul>
               </div>
             ))}
           </div>
@@ -405,9 +402,9 @@ export default function Home() {
           <p className="mb-12 text-center text-green max-w-2xl mx-auto">
             Durante os vinte e um dias, vamos reconhecer quem realmente se comprometer com o processo. As pessoas mais engajadas concorrem a:
           </p>
-          <div className="grid gap-6 md:grid-cols-2 items-stretch">
+          <div className="grid gap-6 md:grid-cols-2 md:grid-rows-3">
             {rewards.map((reward, index) => (
-              <div key={index} className="flex items-center gap-4 p-4 rounded-lg border border-green/20 bg-white min-h-[72px]">
+              <div key={index} className="flex items-center gap-4 p-5 rounded-lg border border-green/20 bg-white">
                 <span className="flex-shrink-0 w-10 h-10 rounded-full bg-green/10 flex items-center justify-center">
                   <span className="text-green text-lg">✦</span>
                 </span>
