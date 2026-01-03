@@ -306,7 +306,7 @@ export default function Home() {
       </section>
 
       {/* For Who Section */}
-      <section className="py-24" style={{ backgroundColor: '#1b4965' }}>
+      <section className="py-24 bg-green">
         <div className="mx-auto max-w-4xl px-6">
           <h2 className="mb-12 text-center text-3xl font-light tracking-tight text-white">
             Um treino diário, simples e guiado
