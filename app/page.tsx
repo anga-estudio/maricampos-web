@@ -58,7 +58,7 @@ const programContent = [
       "21 dias de meditação guiada",
       "Práticas diárias, progressivas e acessíveis",
       "Acesso simples, direto no celular",
-      "Acompanhamento e condução cuidadosa ao longo da jornada",
+      "Acompanhamento e condução cuidadosa ao longo da jornada através de um grupo exclusivo no WhatsApp",
     ],
     image: "/photos/card-1.webp",
   },
