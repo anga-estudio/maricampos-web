@@ -13,31 +13,31 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Mari Campos | Silencie - Programa de Meditacao Guiada de 21 dias",
-  description: "Mari Campos e professora de yoga e meditacao. Conheca o Silencie, programa de meditacao guiada de 21 dias para acalmar a mente, sair da ansiedade e criar clareza emocional.",
+  title: "Mari Campos | Silencie - Programa de Meditação Guiada de 21 dias",
+  description: "Mari Campos é professora de yoga e meditação. Conheça o Silencie, programa de meditação guiada de 21 dias para acalmar a mente, sair da ansiedade e criar clareza emocional.",
   keywords: [
     // Mari Campos
     "Mari Campos",
     "Mari Campos yoga",
-    "Mari Campos meditacao",
+    "Mari Campos meditação",
     "Mari Campos professora",
     "maricamposyogi",
     // Silencie
     "Silencie",
     "programa Silencie",
-    // Meditacao
-    "meditacao",
-    "meditacao guiada",
-    "meditacao para iniciantes",
-    "meditacao online",
-    "programa de meditacao",
-    "curso de meditacao",
-    "21 dias de meditacao",
+    // Meditação
+    "meditação",
+    "meditação guiada",
+    "meditação para iniciantes",
+    "meditação online",
+    "programa de meditação",
+    "curso de meditação",
+    "21 dias de meditação",
     "aprender a meditar",
     "como meditar",
-    "meditacao para ansiedade",
-    "meditacao para dormir",
-    "meditacao mindfulness",
+    "meditação para ansiedade",
+    "meditação para dormir",
+    "meditação mindfulness",
     // Yoga
     "yoga",
     "aula de yoga",
@@ -46,26 +46,26 @@ export const metadata: Metadata = {
     "professora de yoga",
     // Mindfulness
     "mindfulness",
-    "atencao plena",
-    "presenca",
-    "consciencia plena",
+    "atenção plena",
+    "presença",
+    "consciência plena",
     // Bem-estar mental
     "ansiedade",
     "como controlar ansiedade",
     "acalmar a mente",
     "clareza mental",
-    "equilibrio emocional",
-    "saude mental",
+    "equilíbrio emocional",
+    "saúde mental",
     "bem-estar",
     // Autoconhecimento
     "autoconhecimento",
     "desenvolvimento pessoal",
-    "transformacao pessoal",
-    "silencio interior",
+    "transformação pessoal",
+    "silêncio interior",
     "paz interior",
-    // Respiracao
-    "respiracao consciente",
-    "tecnicas de respiracao",
+    // Respiração
+    "respiração consciente",
+    "técnicas de respiração",
   ],
   authors: [{ name: "Mari Campos", url: "https://instagram.com/maricamposyogi" }],
   creator: "Mari Campos",
@@ -85,21 +85,21 @@ export const metadata: Metadata = {
     type: "website",
     locale: "pt_BR",
     siteName: "Mari Campos - Silencie",
-    title: "Mari Campos | Silencie - Programa de Meditacao Guiada",
-    description: "Mari Campos e professora de yoga e meditacao. Conheca o Silencie, programa de meditacao guiada de 21 dias para transformar sua relacao com a mente.",
+    title: "Mari Campos | Silencie - Programa de Meditação Guiada",
+    description: "Mari Campos é professora de yoga e meditação. Conheça o Silencie, programa de meditação guiada de 21 dias para transformar sua relação com a mente.",
     images: [
       {
         url: "/photos/mari.webp",
         width: 1200,
         height: 630,
-        alt: "Mari Campos - Professora de Yoga e Meditacao",
+        alt: "Mari Campos - Professora de Yoga e Meditação",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Mari Campos | Silencie - Meditacao Guiada de 21 dias",
-    description: "Mari Campos e professora de yoga e meditacao. Conheca o Silencie para acalmar a mente e criar clareza emocional.",
+    title: "Mari Campos | Silencie - Meditação Guiada de 21 dias",
+    description: "Mari Campos é professora de yoga e meditação. Conheça o Silencie para acalmar a mente e criar clareza emocional.",
     creator: "@maricamposyogi",
     images: ["/photos/mari.webp"],
   },
@@ -222,20 +222,20 @@ export default function RootLayout({
                   "@id": "https://silencie.com.br/#mari-campos",
                   "name": "Mari Campos",
                   "alternateName": "maricamposyogi",
-                  "description": "Professora de yoga e meditacao, facilitadora de processos de autoconhecimento. Ha mais de uma decada dedica-se ao estudo e transmissao de tecnicas de meditacao, yoga e presenca.",
-                  "jobTitle": "Professora de Yoga e Meditacao",
+                  "description": "Professora de yoga e meditação, facilitadora de processos de autoconhecimento. Há mais de uma década dedica-se ao estudo e transmissão de técnicas de meditação, yoga e presença.",
+                  "jobTitle": "Professora de Yoga e Meditação",
                   "url": "https://silencie.com.br",
                   "image": "https://silencie.com.br/photos/mari.webp",
                   "sameAs": [
                     "https://instagram.com/maricamposyogi"
                   ],
-                  "knowsAbout": ["Yoga", "Meditacao", "Mindfulness", "Autoconhecimento", "Respiracao Consciente"]
+                  "knowsAbout": ["Yoga", "Meditação", "Mindfulness", "Autoconhecimento", "Respiração Consciente"]
                 },
                 {
                   "@type": "Course",
                   "@id": "https://silencie.com.br/#silencie",
-                  "name": "Silencie - Programa de Meditacao Guiada de 21 dias",
-                  "description": "Programa de meditacao guiada de 21 dias para acalmar a mente, sair da ansiedade e criar clareza emocional no dia a dia.",
+                  "name": "Silencie - Programa de Meditação Guiada de 21 dias",
+                  "description": "Programa de meditação guiada de 21 dias para acalmar a mente, sair da ansiedade e criar clareza emocional no dia a dia.",
                   "provider": {
                     "@type": "Person",
                     "@id": "https://silencie.com.br/#mari-campos"
@@ -270,7 +270,7 @@ export default function RootLayout({
                       "name": "Nunca meditei. Posso fazer o Silencie?",
                       "acceptedAnswer": {
                         "@type": "Answer",
-                        "text": "Sim. As meditacoes sao guiadas e progressivas. Voce nao precisa ter experiencia previa."
+                        "text": "Sim. As meditações são guiadas e progressivas. Você não precisa ter experiência prévia."
                       }
                     },
                     {
@@ -283,18 +283,18 @@ export default function RootLayout({
                     },
                     {
                       "@type": "Question",
-                      "name": "O que e meditacao guiada?",
+                      "name": "O que é meditação guiada?",
                       "acceptedAnswer": {
                         "@type": "Answer",
-                        "text": "Meditacao guiada e uma pratica onde um instrutor conduz voce atraves do processo de meditacao com instrucoes passo a passo. O programa Silencie de Mari Campos oferece meditacoes guiadas diarias por 21 dias."
+                        "text": "Meditação guiada é uma prática onde um instrutor conduz você através do processo de meditação com instruções passo a passo. O programa Silencie de Mari Campos oferece meditações guiadas diárias por 21 dias."
                       }
                     },
                     {
                       "@type": "Question",
-                      "name": "Quem e Mari Campos?",
+                      "name": "Quem é Mari Campos?",
                       "acceptedAnswer": {
                         "@type": "Answer",
-                        "text": "Mari Campos e professora de yoga e meditacao e facilitadora de processos de autoconhecimento. Ha mais de uma decada, dedica-se ao estudo, a pratica e a transmissao de tecnicas de meditacao, yoga, respiracao consciente e presenca."
+                        "text": "Mari Campos é professora de yoga e meditação e facilitadora de processos de autoconhecimento. Há mais de uma década, dedica-se ao estudo, à prática e à transmissão de técnicas de meditação, yoga, respiração consciente e presença."
                       }
                     }
                   ]

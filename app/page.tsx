@@ -3,7 +3,7 @@
 import Image from "next/image";
 import { useState, useRef, useEffect } from "react";
 
-const CTA_LINK = "https://checkout.infinitepay.io/maricamposyogi/717WnI7wLH";
+const CTA_LINK = "https://checkout.infinitepay.io/maricamposyogi/1P27bbk9xd";
 
 function BoldSilencie({ children }: { children: string }) {
   const parts = children.split(/(Silencie)/g);
@@ -106,13 +106,6 @@ const testimonials = [
 
 function TestimonialsCarousel() {
   const [currentIndex, setCurrentIndex] = useState(0);
-
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setCurrentIndex((prev) => (prev + 1) % testimonials.length);
-    }, 8000);
-    return () => clearInterval(interval);
-  }, []);
 
   const nextTestimonial = () => {
     setCurrentIndex((prev) => (prev + 1) % testimonials.length);
@@ -590,18 +583,27 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Testimonials Section */}
-      <section className="py-24 border-t border-b border-green/10">
-        <div className="mx-auto max-w-6xl px-6">
-          <h2 className="mb-12 text-center text-3xl font-light tracking-tight text-green">
-            O que dizem sobre a experiência
+      {/* Pricing Section */}
+      <section className="bg-white">
+        <div className="mx-auto max-w-3xl px-6 text-center">
+          <h2 className="mb-4 text-3xl font-light tracking-tight text-green">
+            Pronto para o <strong>Silencie</strong>?
           </h2>
-          <TestimonialsCarousel />
+          <p className="mb-4 text-green/80">
+            Dê o primeiro passo em direção a uma vida mais presente e serena.
+          </p>
+          <p className="mb-12 text-sm text-green/60">
+            Início do programa: <strong className="text-green">15 de janeiro de 2026</strong>
+          </p>
+
+          <div>
+            <PricingCard />
+          </div>
         </div>
       </section>
 
       {/* Instructor Section - Mari Campos */}
-      <section className="mx-auto max-w-4xl px-6 pt-24 pb-24">
+      <section className="mx-auto max-w-4xl px-6 py-24">
         <div className="grid gap-12 md:grid-cols-2 md:items-center">
           <div className="relative aspect-[4/5] overflow-hidden rounded-2xl">
             <Image
@@ -627,7 +629,7 @@ export default function Home() {
               </p>
             </div>
             <a
-              href="https://wa.me/5564992463702"
+              href="https://wa.me/5564992463702?text=Oi%2C%20Mari!%0AVim%20pelo%20site%20e%20queria%20tirar%20algumas%20d%C3%BAvidas%20sobre%20o%20Silencie%20antes%20de%20me%20inscrever."
               target="_blank"
               rel="noopener noreferrer"
               className="mt-8 inline-flex items-center gap-2 rounded-full border border-green/20 px-6 py-3 text-green transition-all hover:bg-green/5"
@@ -642,7 +644,7 @@ export default function Home() {
       </section>
 
       {/* Quote Section */}
-      <section>
+      <section className="pb-24">
         <div className="mx-auto max-w-3xl px-6 text-center">
           <blockquote className="text-2xl font-light leading-relaxed text-green md:text-3xl">
             &ldquo;Não é sobre esvaziar a mente, mas sobre encontrar espaço dentro do caos.&rdquo;
@@ -650,19 +652,13 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Pricing Section */}
-      <section className="py-24 bg-white">
-        <div className="mx-auto max-w-3xl px-6 text-center">
-          <h2 className="mb-4 text-3xl font-light tracking-tight text-green">
-            Pronto para o <strong>Silencie</strong>?
+      {/* Testimonials Section */}
+      <section className="py-24 border-t border-b border-green/10">
+        <div className="mx-auto max-w-6xl px-6">
+          <h2 className="mb-12 text-center text-3xl font-light tracking-tight text-green">
+            O que dizem sobre a experiência
           </h2>
-          <p className="mb-12 text-green/80">
-            Dê o primeiro passo em direção a uma vida mais presente e serena.
-          </p>
-
-          <div>
-            <PricingCard />
-          </div>
+          <TestimonialsCarousel />
         </div>
       </section>
 
