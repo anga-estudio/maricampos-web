@@ -102,6 +102,11 @@ const testimonials = [
     image: "/photos/testimonial-2.jpg",
     message: "Tive a felicidade de ser apresentada, por amigas muito queridas, à Mari, essa profissional incrível, que conduz a prática de yoga, além de outras ferramentas de autoconhecimento, com técnica, leveza e intensidade ao mesmo tempo. 🥰 Mari é uma pessoa linda, que conduz seu trabalho com pura doação, sensibilidade e empatia! ❤️",
   },
+  {
+    name: "Maria Miguel",
+    image: "",
+    message: "As práticas com a Mari são muito especiais para mim. As aulas vão muito além dos movimentos físicos. As reflexões que ela sempre traz no início e no final da aula trazem foco também para a nossa parte espiritual/energética, o que propicia uma experiência muito mais profunda do que uma aula de yoga comum, proporcionando nos bem estar físico e psicológico. Além disso, ela demonstra uma conexão muito especial com seus alunos, transformando cada prática em momentos de cura para todos.",
+  },
 ];
 
 function TestimonialsCarousel() {
@@ -679,10 +684,10 @@ export default function Home() {
       {/* Footer */}
       <footer className="border-t border-green/10 px-6 py-12 text-center">
         <Image
-          src="/logo.svg"
-          alt="Silencie"
-          width={120}
-          height={30}
+          src="/mari-campos-logo-green.png"
+          alt="Mari Campos"
+          width={80}
+          height={80}
           className="mx-auto mb-4"
         />
         <a
