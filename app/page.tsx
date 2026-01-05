@@ -3,7 +3,7 @@
 import Image from "next/image";
 import { useState, useRef, useEffect } from "react";
 
-const CTA_LINK = "https://checkout.infinitepay.io/maricamposyogi/1P27bbk9xd";
+const CTA_LINK = "https://loja.infinitepay.io/maricamposyogi/ccd7542-silencie";
 
 function BoldSilencie({ children }: { children: string }) {
   const parts = children.split(/(Silencie)/g);
@@ -104,7 +104,7 @@ const testimonials = [
   },
   {
     name: "Maria Miguel",
-    image: "",
+    image: "/photos/testimonial-3.jpg",
     message: "As práticas com a Mari são muito especiais para mim. As aulas vão muito além dos movimentos físicos. As reflexões que ela sempre traz no início e no final da aula trazem foco também para a nossa parte espiritual/energética, o que propicia uma experiência muito mais profunda do que uma aula de yoga comum, proporcionando nos bem estar físico e psicológico. Além disso, ela demonstra uma conexão muito especial com seus alunos, transformando cada prática em momentos de cura para todos.",
   },
 ];
@@ -192,72 +192,13 @@ function TestimonialsCarousel() {
 }
 
 function PricingCard() {
-  const [timeLeft, setTimeLeft] = useState({ days: 0, hours: 0, minutes: 0, seconds: 0 });
-  const [isPromoActive, setIsPromoActive] = useState(true);
-
-  useEffect(() => {
-    const promoEndDate = new Date("2026-01-05T16:00:00-03:00").getTime();
-
-    const updateCountdown = () => {
-      const now = new Date().getTime();
-      const difference = promoEndDate - now;
-
-      if (difference <= 0) {
-        setIsPromoActive(false);
-        return;
-      }
-
-      setTimeLeft({
-        days: Math.floor(difference / (1000 * 60 * 60 * 24)),
-        hours: Math.floor((difference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)),
-        minutes: Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60)),
-        seconds: Math.floor((difference % (1000 * 60)) / 1000),
-      });
-    };
-
-    updateCountdown();
-    const interval = setInterval(updateCountdown, 1000);
-    return () => clearInterval(interval);
-  }, []);
-
-  const promoPrice = "118,00";
-  const regularPrice = "138,00";
-
   return (
     <div className="space-y-8">
-      {isPromoActive && (
-        <div className="space-y-4">
-          <p className="text-sm font-medium text-green/40 uppercase tracking-wider">
-            Oferta especial termina em
-          </p>
-          <div className="flex justify-center gap-3">
-            {[
-              { value: timeLeft.days, label: "dias" },
-              { value: timeLeft.hours, label: "horas" },
-              { value: timeLeft.minutes, label: "min" },
-              { value: timeLeft.seconds, label: "seg" },
-            ].map((item) => (
-              <div key={item.label} className="flex flex-col items-center">
-                <span className="text-3xl md:text-4xl font-light text-green tabular-nums">
-                  {String(item.value).padStart(2, "0")}
-                </span>
-                <span className="text-xs text-green/60 uppercase">{item.label}</span>
-              </div>
-            ))}
-          </div>
-        </div>
-      )}
-
       <div className="space-y-2">
-        {isPromoActive && (
-          <p className="text-green/50 line-through text-lg">
-            R$ {regularPrice}
-          </p>
-        )}
         <div className="flex items-baseline justify-center gap-2">
           <span className="text-green/60 text-xl">R$</span>
           <span className="text-5xl md:text-6xl font-light text-green">
-            {isPromoActive ? promoPrice : regularPrice}
+            138,00
           </span>
         </div>
       </div>
