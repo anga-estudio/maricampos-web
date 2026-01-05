@@ -196,7 +196,7 @@ function PricingCard() {
   const [isPromoActive, setIsPromoActive] = useState(true);
 
   useEffect(() => {
-    const promoEndDate = new Date("2026-01-05T19:00:00-03:00").getTime();
+    const promoEndDate = new Date("2026-01-05T16:00:00-03:00").getTime();
 
     const updateCountdown = () => {
       const now = new Date().getTime();
