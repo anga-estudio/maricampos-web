@@ -94,21 +94,18 @@ export default function Home() {
               </div>
             </div>
 
-            {/* Right - Image placeholder */}
+            {/* Right - Photo */}
             <div className="order-1 lg:order-2 flex justify-center lg:justify-end">
               <div className="relative">
                 {/* Main image container */}
-                <div className="w-72 h-96 md:w-80 md:h-[28rem] bg-gradient-to-b from-sand to-cream rounded-[2rem] overflow-hidden relative">
-                  <div className="absolute inset-0 flex items-center justify-center">
-                    <div className="text-center">
-                      <div className="w-20 h-20 mx-auto mb-4 rounded-full bg-sage/10 flex items-center justify-center">
-                        <svg className="w-10 h-10 text-sage/50" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1} d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
-                        </svg>
-                      </div>
-                      <p className="text-sage/50 text-sm">Sua foto</p>
-                    </div>
-                  </div>
+                <div className="w-80 h-[26rem] md:w-96 md:h-[32rem] rounded-[2rem] overflow-hidden relative">
+                  <Image
+                    src="/photo.svg"
+                    alt="Mari Campos"
+                    fill
+                    className="object-cover"
+                    priority
+                  />
                 </div>
 
                 {/* Decorative elements */}
@@ -193,13 +190,30 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Quote */}
-      <section className="py-24 bg-sage">
-        <div className="mx-auto max-w-4xl px-6 text-center">
+      {/* Quote - Night Sky */}
+      <section className="py-32 relative overflow-hidden bg-gradient-to-b from-sage via-[#0d2438] to-[#050d14]">
+        {/* Stars */}
+        <div className="absolute inset-0">
+          <div className="absolute top-[10%] left-[15%] w-1 h-1 bg-white/40 rounded-full" />
+          <div className="absolute top-[20%] left-[80%] w-1.5 h-1.5 bg-white/30 rounded-full" />
+          <div className="absolute top-[35%] left-[25%] w-0.5 h-0.5 bg-white/50 rounded-full" />
+          <div className="absolute top-[15%] left-[60%] w-1 h-1 bg-white/20 rounded-full" />
+          <div className="absolute top-[45%] left-[90%] w-0.5 h-0.5 bg-white/40 rounded-full" />
+          <div className="absolute top-[60%] left-[10%] w-1 h-1 bg-white/25 rounded-full" />
+          <div className="absolute top-[70%] left-[45%] w-0.5 h-0.5 bg-white/35 rounded-full" />
+          <div className="absolute top-[25%] left-[35%] w-1 h-1 bg-white/15 rounded-full" />
+          <div className="absolute top-[55%] left-[70%] w-1.5 h-1.5 bg-white/20 rounded-full" />
+          <div className="absolute top-[80%] left-[85%] w-0.5 h-0.5 bg-white/30 rounded-full" />
+        </div>
+
+        {/* Moon glow */}
+        <div className="absolute top-10 right-20 w-32 h-32 bg-white/5 rounded-full blur-3xl" />
+
+        <div className="relative mx-auto max-w-4xl px-6 text-center">
           <blockquote className="text-2xl md:text-3xl lg:text-4xl font-light text-white leading-relaxed">
             "O yoga não é sobre tocar os dedos dos pés, é sobre o que você aprende no caminho até lá."
           </blockquote>
-          <p className="mt-8 text-white/60">Judith Hanson Lasater</p>
+          <p className="mt-8 text-white/50">Judith Hanson Lasater</p>
         </div>
       </section>
 
