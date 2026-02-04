@@ -3,11 +3,11 @@
 :root {
   --background: #faf9f6;
   --foreground: #2d2d2d;
-  --sage: #7d8471;
-  --sage-light: #a8b09c;
-  --sage-dark: #5c6352;
-  --cream: #f5f3ee;
-  --sand: #e8e4dc;
+  --sage: #1B4965;
+  --sage-light: #3d6a8a;
+  --sage-dark: #0f2d40;
+  --cream: #f0f4f7;
+  --sand: #dce5eb;
   --text-muted: #6b6b6b;
 }
 
@@ -21,17 +21,12 @@
   --color-sand: var(--sand);
   --color-text-muted: var(--text-muted);
   --font-sans: var(--font-inter);
-  --font-script: var(--font-caveat);
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
   font-family: var(--font-inter), system-ui, sans-serif;
-}
-
-.font-script {
-  font-family: var(--font-caveat), cursive;
 }
 
 html {

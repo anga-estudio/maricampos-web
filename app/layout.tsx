@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Inter, Caveat } from "next/font/google";
+import { Inter } from "next/font/google";
 import Script from "next/script";
 import "./globals.css";
 
@@ -10,17 +10,11 @@ const inter = Inter({
   subsets: ["latin"],
 });
 
-const caveat = Caveat({
-  variable: "--font-caveat",
-  subsets: ["latin"],
-  weight: ["400", "500", "600", "700"],
-});
-
 export const metadata: Metadata = {
   title: "Mari Campos | Yoga & Bem-estar",
   description: "Mari Campos - Yogi, instrutora de yoga e criadora do Silencie. Transformando vidas através da prática consciente.",
   icons: {
-    icon: "/logo-green.svg",
+    icon: "/logo-blue.svg",
   },
 };
 
@@ -46,7 +40,7 @@ export default function RootLayout({
         </Script>
       </head>
       <body
-        className={`${inter.variable} ${caveat.variable} antialiased`}
+        className={`${inter.variable} antialiased`}
       >
         {children}
       </body>
