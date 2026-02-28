@@ -11,8 +11,8 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: "Mari Campos | Yoga & Bem-estar",
-  description: "Mari Campos - Yogi, instrutora de yoga e criadora do Silencie. Transformando vidas através da prática consciente.",
+  title: "Mari Campos | Yoga, Meditação & Transformação",
+  description: "Mari Campos — Professora de yoga, meditação e facilitadora de jornadas de transformação para mulheres que desejam desacelerar, se reconectar e florescer com consciência.",
   icons: {
     icon: "/logo-blue.svg",
   },
