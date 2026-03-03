@@ -282,6 +282,7 @@ export default function Home() {
               { from: "ruído interno", to: "direção" },
               { from: "desconexão", to: "pertencimento" },
               { from: "sobrevivência", to: "consciência" },
+              { from: "desregulação", to: "sustentação" },
             ].map((item) => (
               <div key={item.from} className="flex items-center gap-3 bg-white/5 rounded-xl px-6 py-4 border border-white/10">
                 <span className="text-white/40">De {item.from}</span>
@@ -386,6 +387,11 @@ export default function Home() {
                 <p className="text-text-muted text-lg mb-6 leading-relaxed">
                   Ideal para mulheres que precisam de estrutura e pertencimento.
                 </p>
+                <div className="flex flex-wrap gap-3">
+                  {["Escuta", "Presença", "Ritmo", "Comunidade", "Sustentação"].map((palavra) => (
+                    <span key={palavra} className="px-4 py-2 bg-sage/10 text-sage rounded-full text-sm">{palavra}</span>
+                  ))}
+                </div>
               </div>
               <div className="bg-cream rounded-2xl p-8">
                 <h4 className="text-lg font-medium mb-4">Experiências em grupo com:</h4>
@@ -417,9 +423,14 @@ export default function Home() {
               <div>
                 <div className="inline-block px-3 py-1 bg-sage/10 rounded-full text-sage text-sm mb-4">03</div>
                 <h3 className="text-3xl font-light mb-4">Retiros Presenciais</h3>
-                <p className="text-text-muted text-lg leading-relaxed">
+                <p className="text-text-muted text-lg mb-6 leading-relaxed">
                   Imersões profundas para reconexão e transformação.
                 </p>
+                <div className="flex flex-wrap gap-3">
+                  {["Natureza", "Corpo", "Silêncio", "Ritual", "Retorno"].map((palavra) => (
+                    <span key={palavra} className="px-4 py-2 bg-sage/10 text-sage rounded-full text-sm">{palavra}</span>
+                  ))}
+                </div>
               </div>
               <div className="bg-cream rounded-2xl p-8">
                 <h4 className="text-lg font-medium mb-4">Incluem:</h4>
@@ -570,19 +581,20 @@ export default function Home() {
             <h2 className="text-4xl md:text-5xl font-light leading-tight">
               Esse trabalho é
               <br />
-              <span className="text-sage">para você se…</span>
+              <span className="text-sage">para você que:</span>
             </h2>
           </div>
 
           <div className="grid md:grid-cols-2 gap-4">
             {[
-              "Você sente que vive no automático",
-              "Você cuida de todos e esquece de si",
-              "Você está em transição",
-              "Você está no puerpério",
-              "Você sente que precisa desacelerar",
-              "Você quer espiritualidade com aterramento",
-              "Você quer prática real, não teoria vazia",
+              "Sente que vive em estado de alerta constante",
+              "Acorda já cansada, mesmo depois de dormir",
+              "Cuida de tudo e todos, mas por dentro está no limite",
+              "Perdeu o ritmo próprio tentando acompanhar o ritmo do mundo",
+              "Sente que a vida está passando no automático",
+              "Quer espiritualidade com aterramento, não fuga",
+              "Precisa aprender a se regular, não apenas relaxar",
+              "Quer criar base interna antes de expandir",
             ].map((item) => (
               <div key={item} className="flex items-start gap-4 p-5 bg-background rounded-xl">
                 <span className="text-sage mt-0.5 shrink-0">
@@ -591,6 +603,60 @@ export default function Home() {
                   </svg>
                 </span>
                 <span className="text-text-muted text-lg">{item}</span>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Depoimentos */}
+      <section className="py-24 md:py-32">
+        <div className="mx-auto max-w-6xl px-6">
+          <div className="text-center mb-16">
+            <p className="text-sage text-sm uppercase tracking-widest mb-4">Depoimentos</p>
+            <h2 className="text-4xl md:text-5xl font-light leading-tight">
+              O que dizem quem
+              <br />
+              <span className="text-sage">já viveu essa experiência</span>
+            </h2>
+          </div>
+
+          <div className="grid md:grid-cols-3 gap-8">
+            {[
+              {
+                name: "Roberta Ludwig",
+                image: "/photos/testimonial-1.jpg",
+                message: "Eu me sentia mais frágil, mais confusa, mais melancólica. Depois das práticas senti muito mais confiança nas técnicas de autoconhecimento, me interessei por entender quais eram os sentimentos que vinham e por que vinham. Entendi que as emoções são ótimas e podemos nos tranquilizar mesmo nos momentos turbulentos. Percebo que raramente senti novamente os batimentos cardíacos excessivamente acelerados, como acontecia antes. Sei perceber quando uma crise vai se instalar... Aceito a tristeza muito bem, prezo muito mais pelo meu descanso. Adoro ficar em silêncio e em ambientes de maior serenidade. Leio sobre yoga, respiração, e escuto muitos e diversos mantras. As aulas com a Mari são como uma massagem, uma comida gostosa, um dia de férias bem leve. São aulas de carinho com meu corpo.",
+              },
+              {
+                name: "Ana Paula de Oliveira",
+                image: "/photos/testimonial-2.jpg",
+                message: "Tive a felicidade de ser apresentada, por amigas muito queridas, à Mari, essa profissional incrível, que conduz a prática de yoga, além de outras ferramentas de autoconhecimento, com técnica, leveza e intensidade ao mesmo tempo. Mari é uma pessoa linda, que conduz seu trabalho com pura doação, sensibilidade e empatia!",
+              },
+              {
+                name: "Maria Miguel",
+                image: "/photos/testimonial-3.jpg",
+                message: "As práticas com a Mari são muito especiais para mim. As aulas vão muito além dos movimentos físicos. As reflexões que ela sempre traz no início e no final da aula trazem foco também para a nossa parte espiritual/energética, o que propicia uma experiência muito mais profunda do que uma aula de yoga comum, proporcionando nos bem estar físico e psicológico. Além disso, ela demonstra uma conexão muito especial com seus alunos, transformando cada prática em momentos de cura para todos.",
+              },
+            ].map((testimonial) => (
+              <div key={testimonial.name} className="bg-cream rounded-2xl p-8 flex flex-col">
+                <svg className="w-8 h-8 text-sage/20 mb-4 shrink-0" fill="currentColor" viewBox="0 0 24 24">
+                  <path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z" />
+                </svg>
+                <p className="text-text-muted leading-relaxed mb-6 flex-1 line-clamp-[8]">
+                  {testimonial.message}
+                </p>
+                <div className="flex items-center gap-3 pt-4 border-t border-sage/10">
+                  <div className="w-10 h-10 rounded-full overflow-hidden relative bg-sage/10 shrink-0">
+                    <Image
+                      src={testimonial.image}
+                      alt={testimonial.name}
+                      fill
+                      className="object-cover"
+                    />
+                  </div>
+                  <span className="font-medium text-foreground">{testimonial.name}</span>
+                </div>
               </div>
             ))}
           </div>
@@ -611,10 +677,10 @@ export default function Home() {
 
         <div className="relative mx-auto max-w-3xl px-6 text-center">
           <h2 className="text-3xl md:text-4xl lg:text-5xl font-light text-white leading-relaxed mb-6">
-            Talvez o que você precisa não seja fazer mais.
+            O que você precisa não é fazer mais.
           </h2>
           <p className="text-2xl md:text-3xl font-light text-white/70 mb-12">
-            Talvez seja silenciar.
+            E sim voltar ao seu próprio ritmo.
           </p>
           <a
             href={WHATSAPP_URL}
