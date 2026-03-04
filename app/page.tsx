@@ -381,16 +381,70 @@ export default function Home() {
           </div>
 
           <div className="space-y-16">
-            {/* Silencie */}
+            {/* Yoga */}
             <div className="grid lg:grid-cols-2 gap-12 items-start">
               <div>
                 <div className="inline-block px-3 py-1 bg-sage/10 rounded-full text-sage text-sm mb-4">01</div>
+                <h3 className="text-3xl font-light mb-4">Yoga</h3>
+                <h4 className="text-xl text-sage mb-4">Aula de yoga</h4>
+                <p className="text-text-muted text-lg mb-4 leading-relaxed">
+                  Práticas que unem movimento, respiração e presença para regular o corpo, acalmar a mente e criar mais estabilidade interna no dia a dia.
+                </p>
+                <p className="text-text-muted text-lg mb-6 leading-relaxed">
+                  Disponível em diferentes formatos: aulas online ou presenciais, em grupo ou individuais.
+                </p>
+                <div className="flex flex-wrap gap-3 mb-8">
+                  {["Respiração", "Movimento", "Presença", "Regulação", "Integração"].map((kw) => (
+                    <span key={kw} className="px-4 py-2 bg-sage/10 text-sage rounded-full text-sm">{kw}</span>
+                  ))}
+                </div>
+              </div>
+              <div className="bg-cream rounded-2xl p-8">
+                <h4 className="text-lg font-medium mb-4">Inclui:</h4>
+                <div className="space-y-3">
+                  {[
+                    "Prática de yoga adaptada a diferentes momentos de vida",
+                    "Técnicas de respiração consciente",
+                    "Momentos de meditação e silêncio guiado",
+                    "Construção de consciência corporal",
+                    "Espaço seguro para desacelerar e se reconectar",
+                  ].map((item) => (
+                    <div key={item} className="flex items-center gap-3">
+                      <span className="text-sage">
+                        <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                        </svg>
+                      </span>
+                      <span className="text-text-muted">{item}</span>
+                    </div>
+                  ))}
+                </div>
+                <a
+                  href={WHATSAPP_URL}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="mt-6 inline-flex items-center gap-2 text-sage hover:text-sage-dark transition-colors group text-sm font-medium"
+                >
+                  Quero saber mais
+                  <svg className="w-4 h-4 group-hover:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                  </svg>
+                </a>
+              </div>
+            </div>
+
+            <div className="w-full h-px bg-sage/10" />
+
+            {/* Silencie */}
+            <div className="grid lg:grid-cols-2 gap-12 items-start">
+              <div>
+                <div className="inline-block px-3 py-1 bg-sage/10 rounded-full text-sage text-sm mb-4">02</div>
                 <h3 className="text-3xl font-light mb-4">Silencie — Jornada de 21 dias</h3>
                 <p className="text-text-muted text-lg mb-6 leading-relaxed">
                   Programa estruturado em cinco fases:
                 </p>
                 <div className="flex flex-wrap gap-3 mb-8">
-                  {["Yoga", "Despertar", "Esvaziar", "Cultivar", "Enraizar", "Florescer"].map((fase) => (
+                  {["Despertar", "Esvaziar", "Cultivar", "Enraizar", "Florescer"].map((fase) => (
                     <span key={fase} className="px-4 py-2 bg-sage/10 text-sage rounded-full text-sm">{fase}</span>
                   ))}
                 </div>
@@ -435,7 +489,7 @@ export default function Home() {
             {/* Jornadas e Comunidades */}
             <div className="grid lg:grid-cols-2 gap-12 items-start">
               <div>
-                <div className="inline-block px-3 py-1 bg-sage/10 rounded-full text-sage text-sm mb-4">02</div>
+                <div className="inline-block px-3 py-1 bg-sage/10 rounded-full text-sage text-sm mb-4">03</div>
                 <h3 className="text-3xl font-light mb-4">Jornadas e Comunidades</h3>
                 <p className="text-text-muted text-lg mb-6 leading-relaxed">
                   Ideal para mulheres que precisam de estrutura e pertencimento.
@@ -474,7 +528,7 @@ export default function Home() {
             {/* Retiros Presenciais */}
             <div className="grid lg:grid-cols-2 gap-12 items-start">
               <div>
-                <div className="inline-block px-3 py-1 bg-sage/10 rounded-full text-sage text-sm mb-4">03</div>
+                <div className="inline-block px-3 py-1 bg-sage/10 rounded-full text-sage text-sm mb-4">04</div>
                 <h3 className="text-3xl font-light mb-4">Retiros Presenciais</h3>
                 <p className="text-text-muted text-lg mb-6 leading-relaxed">
                   Imersões profundas para reconexão e transformação.
@@ -515,7 +569,7 @@ export default function Home() {
             {/* Mentoria */}
             <div className="grid lg:grid-cols-2 gap-12 items-start">
               <div>
-                <div className="inline-block px-3 py-1 bg-sage/10 rounded-full text-sage text-sm mb-4">04</div>
+                <div className="inline-block px-3 py-1 bg-sage/10 rounded-full text-sage text-sm mb-4">05</div>
                 <h3 className="text-3xl font-light mb-4">Mentoria</h3>
                 <p className="text-text-muted text-lg mb-6 leading-relaxed">
                   Um acompanhamento individual para mulheres que sentem que precisam aprender a se sustentar emocionalmente, energeticamente e na própria rotina.
@@ -571,7 +625,7 @@ export default function Home() {
             {/* Experiências Corporativas */}
             <div className="grid lg:grid-cols-2 gap-12 items-start">
               <div>
-                <div className="inline-block px-3 py-1 bg-sage/10 rounded-full text-sage text-sm mb-4">05</div>
+                <div className="inline-block px-3 py-1 bg-sage/10 rounded-full text-sage text-sm mb-4">06</div>
                 <h3 className="text-3xl font-light mb-4">Experiências Corporativas</h3>
                 <p className="text-text-muted text-lg mb-6 leading-relaxed">
                   Workshops e vivências para empresas que desejam:
