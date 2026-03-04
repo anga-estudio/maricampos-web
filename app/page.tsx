@@ -634,7 +634,7 @@ export default function Home() {
             <h2 className="text-4xl md:text-5xl font-light leading-tight">
               Esse trabalho é
               <br />
-              <span className="text-sage">para você que:</span>
+              <span className="text-sage">para você que</span>
             </h2>
           </div>
 
@@ -728,12 +728,12 @@ export default function Home() {
           <div className="absolute top-[75%] left-[15%] w-1 h-1 bg-white/15 rounded-full" />
         </div>
 
-        <div className="relative mx-auto max-w-3xl px-6 text-center">
-          <h2 className="text-3xl md:text-4xl lg:text-5xl font-light text-white leading-relaxed mb-6 whitespace-nowrap">
-            O que você precisa não é fazer mais.
+        <div className="relative mx-auto max-w-4xl px-6 text-center">
+          <h2 className="text-3xl md:text-4xl lg:text-5xl font-light text-white leading-relaxed mb-6">
+            O que você precisa não é fazer mais
           </h2>
           <p className="text-2xl md:text-3xl font-light text-white/70 mb-12">
-            E sim voltar ao seu próprio ritmo.
+            E sim voltar ao seu próprio ritmo
           </p>
           <a
             href={WHATSAPP_URL}
