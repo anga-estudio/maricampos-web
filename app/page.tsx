@@ -47,7 +47,7 @@ export default function Home() {
 
   return (
     <div className="min-h-screen bg-background">
-      <audio ref={audioRef} src="/audio/water-ambient.mp3?v=5" loop preload="auto" />
+      <audio ref={audioRef} src="/audio/water-ambient.mp3?v=6" loop preload="auto" />
 
       {/* Header */}
       <header className="fixed top-0 left-0 right-0 z-50 bg-background/80 backdrop-blur-md">
@@ -71,12 +71,11 @@ export default function Home() {
             >
               {isPlaying ? (
                 <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15.536 8.464a5 5 0 010 7.072M17.95 6.05a8 8 0 010 11.9M6.5 8.8h2.4L12 5.5v13l-3.1-3.3H6.5a.8.8 0 01-.8-.8v-4.8a.8.8 0 01.8-.8z" />
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M19.114 5.636a9 9 0 010 12.728M16.463 8.288a5.25 5.25 0 010 7.424M6.75 8.25l4.72-4.72a.75.75 0 011.28.53v15.88a.75.75 0 01-1.28.53l-4.72-4.72H4.51c-.88 0-1.704-.507-1.938-1.354A9.01 9.01 0 012.25 12c0-.83.112-1.633.322-2.396C2.806 8.756 3.63 8.25 4.51 8.25H6.75z" />
                 </svg>
               ) : (
                 <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6.5 8.8h2.4L12 5.5v13l-3.1-3.3H6.5a.8.8 0 01-.8-.8v-4.8a.8.8 0 01.8-.8z" />
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 14l-4-4m0 4l4-4" />
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M17.25 9.75L19.5 12m0 0l2.25 2.25M19.5 12l2.25-2.25M19.5 12l-2.25 2.25m-10.5-6l4.72-4.72a.75.75 0 011.28.53v15.88a.75.75 0 01-1.28.53l-4.72-4.72H4.51c-.88 0-1.704-.507-1.938-1.354A9.009 9.009 0 012.25 12c0-.83.112-1.633.322-2.396C2.806 8.756 3.63 8.25 4.51 8.25H6.75z" />
                 </svg>
               )}
             </button>
@@ -158,15 +157,11 @@ export default function Home() {
             <span className="text-white/70">Campos</span>
           </h1>
 
-          <div className="space-y-2 text-xl max-w-md mx-auto leading-relaxed mb-10">
-            <p className="italic text-white/60">Voltar para si.</p>
-            <p className="italic text-white/60">Respirar com consciência.</p>
-            <p className="italic text-white/60">Viver com presença.</p>
+          <div className="space-y-3 max-w-sm mx-auto mb-10">
+            <p className="italic text-sm tracking-widest text-white/55 font-light">Voltar para si.</p>
+            <p className="italic text-sm tracking-widest text-white/55 font-light">Respirar com consciência.</p>
+            <p className="italic text-sm tracking-widest text-white/55 font-light">Viver com presença.</p>
           </div>
-
-          <p className="text-lg text-white/50 max-w-lg mx-auto leading-relaxed mb-10">
-            Professora de yoga, meditação e facilitadora de jornadas de transformação para mulheres que desejam desacelerar, se reconectar e florescer com consciência.
-          </p>
 
           <div className="flex items-center justify-center gap-6">
             <a
@@ -208,9 +203,27 @@ export default function Home() {
       {/* Sobre Section */}
       <section id="sobre" className="py-24 md:py-32">
         <div className="mx-auto max-w-6xl px-6">
-          <div className="grid lg:grid-cols-5 gap-16">
-            {/* Left - Intro */}
-            <div className="lg:col-span-2 flex flex-col justify-center">
+          <div className="grid lg:grid-cols-2 gap-16 items-center">
+
+            {/* Left - Photo */}
+            <div className="flex justify-center lg:justify-start">
+              <div className="relative">
+                <div className="w-80 h-[26rem] md:w-96 md:h-[32rem] rounded-[2rem] overflow-hidden relative">
+                  <Image
+                    src="/photos/mari.webp"
+                    alt="Mari Campos"
+                    fill
+                    className="object-cover"
+                  />
+                </div>
+                {/* Decorative rectangles */}
+                <div className="absolute -z-10 -bottom-4 -right-4 w-full h-full border border-sage/20 rounded-[2rem]" />
+                <div className="absolute -z-20 -bottom-8 -right-8 w-full h-full bg-sage/5 rounded-[2rem]" />
+              </div>
+            </div>
+
+            {/* Right - Content */}
+            <div className="flex flex-col justify-center">
               <p className="text-sage text-sm uppercase tracking-widest mb-4">Sobre mim</p>
               <h2 className="text-4xl md:text-5xl font-light mb-8 leading-tight">
                 Mais do que prática.
@@ -218,25 +231,14 @@ export default function Home() {
                 <span className="text-sage">É um caminho de retorno.</span>
               </h2>
 
-              <div className="space-y-4 text-text-muted text-lg leading-relaxed">
-                <p>
-                  Durante anos, eu vi mulheres exaustas tentando dar conta de tudo.
-                </p>
-                <p>
-                  Carregando o mundo nas costas. Silenciando a própria voz.
-                </p>
-                <p>
-                  Eu também já estive ali.
-                </p>
-                <p>
-                  A yoga, a respiração consciente e a meditação não foram apenas práticas para mim. Foram ferramentas de reconstrução.
-                </p>
+              <div className="space-y-4 text-text-muted text-lg leading-relaxed mb-10">
+                <p>Durante anos, eu vi mulheres exaustas tentando dar conta de tudo.</p>
+                <p>Carregando o mundo nas costas. Silenciando a própria voz.</p>
+                <p>Eu também já estive ali.</p>
+                <p>A yoga, a respiração consciente e a meditação não foram apenas práticas para mim. Foram ferramentas de reconstrução.</p>
               </div>
-            </div>
 
-            {/* Right - Lists */}
-            <div className="lg:col-span-3">
-              <div className="mb-12">
+              <div className="mb-10">
                 <h3 className="text-xl font-medium text-foreground mb-6">
                   Hoje, eu facilito experiências que ajudam mulheres a:
                 </h3>
@@ -283,8 +285,8 @@ export default function Home() {
                   ))}
                 </div>
               </div>
-
             </div>
+
           </div>
         </div>
       </section>
