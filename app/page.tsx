@@ -10,6 +10,13 @@ export default function Home() {
   const audioRef = useRef<HTMLAudioElement>(null);
   const [isPlaying, setIsPlaying] = useState(false);
   const [hasInteracted, setHasInteracted] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
+
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 60);
+    window.addEventListener("scroll", onScroll);
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
 
   const startAudio = useCallback(() => {
     if (hasInteracted) return;
@@ -50,11 +57,11 @@ export default function Home() {
       <audio ref={audioRef} src="/audio/water-ambient.mp3?v=6" loop preload="auto" />
 
       {/* Header */}
-      <header className="fixed top-0 left-0 right-0 z-50 bg-background/80 backdrop-blur-md">
+      <header className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${scrolled ? "bg-background/95 backdrop-blur-md shadow-sm" : "bg-transparent"}`}>
         <nav className="mx-auto max-w-6xl px-6 py-4 flex items-center justify-between">
           <a href="/" className="flex items-center">
             <Image
-              src="/logo-blue.svg"
+              src={scrolled ? "/logo-blue.svg" : "/logo-offwhite.svg"}
               alt="Mari Campos"
               width={44}
               height={44}
@@ -66,7 +73,7 @@ export default function Home() {
             {/* Audio toggle */}
             <button
               onClick={toggleAudio}
-              className="w-10 h-10 rounded-full border border-sage/20 flex items-center justify-center text-sage hover:bg-sage/5 transition-colors"
+              className={`w-10 h-10 rounded-full border flex items-center justify-center transition-colors ${scrolled ? "border-sage/20 text-sage hover:bg-sage/5" : "border-white/30 text-white hover:bg-white/10"}`}
               aria-label={isPlaying ? "Pausar som" : "Tocar som"}
             >
               {isPlaying ? (
@@ -84,7 +91,7 @@ export default function Home() {
               <li>
                 <a
                   href="#sobre"
-                  className="text-foreground/60 hover:text-sage transition-colors"
+                  className={`transition-colors ${scrolled ? "text-foreground/60 hover:text-sage" : "text-white/80 hover:text-white"}`}
                 >
                   Sobre
                 </a>
@@ -92,7 +99,7 @@ export default function Home() {
               <li>
                 <a
                   href="#servicos"
-                  className="text-foreground/60 hover:text-sage transition-colors"
+                  className={`transition-colors ${scrolled ? "text-foreground/60 hover:text-sage" : "text-white/80 hover:text-white"}`}
                 >
                   Experiências
                 </a>
@@ -100,7 +107,7 @@ export default function Home() {
               <li>
                 <a
                   href="#para-quem"
-                  className="text-foreground/60 hover:text-sage transition-colors"
+                  className={`transition-colors ${scrolled ? "text-foreground/60 hover:text-sage" : "text-white/80 hover:text-white"}`}
                 >
                   Para quem
                 </a>
@@ -131,7 +138,7 @@ export default function Home() {
       </header>
 
       {/* Hero Section */}
-      <section className="min-h-screen flex items-center relative overflow-hidden">
+      <section className="h-[75vh] flex items-center relative overflow-hidden">
         {/* Video background */}
         <video
           autoPlay
@@ -146,7 +153,7 @@ export default function Home() {
         {/* Dark overlay for text readability */}
         <div className="absolute inset-0 bg-black/50" />
 
-        <div className="relative z-10 mx-auto max-w-4xl px-6 w-full text-center">
+        <div className="relative z-10 w-full px-6 text-center">
           <div className="inline-block px-4 py-1.5 bg-white/10 backdrop-blur-sm rounded-full text-white/80 text-sm mb-8 border border-white/10">
             Yoga, Meditação & Transformação
           </div>
@@ -154,13 +161,13 @@ export default function Home() {
           <h1 className="text-6xl md:text-7xl lg:text-8xl font-light tracking-tight leading-[0.9] mb-8 text-white">
             Mari
             <br />
-            <span className="text-white/70">Campos</span>
+            <span className="text-white">Campos</span>
           </h1>
 
           <div className="space-y-3 max-w-sm mx-auto mb-10">
-            <p className="italic text-sm tracking-widest text-white/55 font-light">Voltar para si.</p>
-            <p className="italic text-sm tracking-widest text-white/55 font-light">Respirar com consciência.</p>
-            <p className="italic text-sm tracking-widest text-white/55 font-light">Viver com presença.</p>
+            <p className="italic text-sm tracking-widest text-white font-light">Voltar para si.</p>
+            <p className="italic text-sm tracking-widest text-white font-light">Respirar com consciência.</p>
+            <p className="italic text-sm tracking-widest text-white font-light">Viver com presença.</p>
           </div>
 
           <div className="flex items-center justify-center gap-6">
@@ -203,26 +210,27 @@ export default function Home() {
       {/* Sobre Section */}
       <section id="sobre" className="py-24 md:py-32">
         <div className="mx-auto max-w-6xl px-6">
-          <div className="grid lg:grid-cols-2 gap-16 items-center">
+
+          {/* Row 1: Photo + Intro text — mesma altura */}
+          <div className="grid lg:grid-cols-2 gap-16 items-stretch mb-20">
 
             {/* Left - Photo */}
             <div className="flex justify-center lg:justify-start">
-              <div className="relative">
-                <div className="w-80 h-[26rem] md:w-96 md:h-[32rem] rounded-[2rem] overflow-hidden relative">
+              <div className="relative w-full max-w-sm">
+                <div className="w-full h-full min-h-[26rem] rounded-[2rem] overflow-hidden relative">
                   <Image
                     src="/photos/mari.webp"
                     alt="Mari Campos"
                     fill
-                    className="object-cover"
+                    className="object-cover object-top"
                   />
                 </div>
-                {/* Decorative rectangles */}
                 <div className="absolute -z-10 -bottom-4 -right-4 w-full h-full border border-sage/20 rounded-[2rem]" />
                 <div className="absolute -z-20 -bottom-8 -right-8 w-full h-full bg-sage/5 rounded-[2rem]" />
               </div>
             </div>
 
-            {/* Right - Content */}
+            {/* Right - Intro text */}
             <div className="flex flex-col justify-center">
               <p className="text-sage text-sm uppercase tracking-widest mb-4">Sobre mim</p>
               <h2 className="text-4xl md:text-5xl font-light mb-8 leading-tight">
@@ -230,64 +238,69 @@ export default function Home() {
                 <br />
                 <span className="text-sage">É um caminho de retorno.</span>
               </h2>
-
-              <div className="space-y-4 text-text-muted text-lg leading-relaxed mb-10">
+              <div className="space-y-4 text-text-muted text-lg leading-relaxed">
                 <p>Durante anos, eu vi mulheres exaustas tentando dar conta de tudo.</p>
                 <p>Carregando o mundo nas costas. Silenciando a própria voz.</p>
                 <p>Eu também já estive ali.</p>
                 <p>A yoga, a respiração consciente e a meditação não foram apenas práticas para mim. Foram ferramentas de reconstrução.</p>
               </div>
+            </div>
 
-              <div className="mb-10">
-                <h3 className="text-xl font-medium text-foreground mb-6">
-                  Hoje, eu facilito experiências que ajudam mulheres a:
-                </h3>
-                <div className="space-y-3">
-                  {[
-                    "Desacelerar sem culpa",
-                    "Reorganizar o caos interno",
-                    "Criar rituais simples de presença",
-                    "Transformar cansaço em consciência",
-                    "Sair do automático e voltar para o essencial",
-                  ].map((item) => (
-                    <div key={item} className="flex items-start gap-3">
-                      <span className="text-sage mt-1.5 shrink-0">
-                        <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-                        </svg>
-                      </span>
-                      <span className="text-text-muted text-lg">{item}</span>
-                    </div>
-                  ))}
-                </div>
+          </div>
+
+          {/* Row 2: As duas listas lado a lado */}
+          <div className="grid lg:grid-cols-2 gap-16">
+
+            <div>
+              <h3 className="text-xl font-medium text-foreground mb-6">
+                Hoje, eu facilito experiências que ajudam mulheres a:
+              </h3>
+              <div className="space-y-3">
+                {[
+                  "Desacelerar sem culpa",
+                  "Reorganizar o caos interno",
+                  "Criar rituais simples de presença",
+                  "Transformar cansaço em consciência",
+                  "Sair do automático e voltar para o essencial",
+                ].map((item) => (
+                  <div key={item} className="flex items-start gap-3">
+                    <span className="text-sage mt-1.5 shrink-0">
+                      <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                      </svg>
+                    </span>
+                    <span className="text-text-muted text-lg">{item}</span>
+                  </div>
+                ))}
               </div>
+            </div>
 
-              <div>
-                <h3 className="text-xl font-medium text-foreground mb-6">
-                  Meu trabalho integra:
-                </h3>
-                <div className="grid grid-cols-2 gap-3">
-                  {[
-                    "Yoga",
-                    "Meditação guiada",
-                    "Respiração consciente",
-                    "Journaling terapêutico",
-                    "Filosofia prática aplicada à vida real",
-                    "Rituais de transição e ciclos",
-                    "Ritual do cacau",
-                    "Dança terapêutica",
-                    "Sound healing",
-                  ].map((item) => (
-                    <div key={item} className="flex items-center gap-2">
-                      <div className="w-1.5 h-1.5 rounded-full bg-sage/40 shrink-0" />
-                      <span className="text-text-muted">{item}</span>
-                    </div>
-                  ))}
-                </div>
+            <div>
+              <h3 className="text-xl font-medium text-foreground mb-6">
+                Meu trabalho integra:
+              </h3>
+              <div className="grid grid-cols-2 gap-3">
+                {[
+                  "Yoga",
+                  "Meditação guiada",
+                  "Respiração consciente",
+                  "Journaling terapêutico",
+                  "Filosofia prática aplicada à vida real",
+                  "Rituais de transição e ciclos",
+                  "Ritual do cacau",
+                  "Dança terapêutica",
+                  "Sound healing",
+                ].map((item) => (
+                  <div key={item} className="flex items-center gap-2">
+                    <div className="w-1.5 h-1.5 rounded-full bg-sage/40 shrink-0" />
+                    <span className="text-text-muted">{item}</span>
+                  </div>
+                ))}
               </div>
             </div>
 
           </div>
+
         </div>
       </section>
 
@@ -368,12 +381,11 @@ export default function Home() {
           </div>
 
           <div className="space-y-16">
-            {/* Programas Online */}
+            {/* Silencie */}
             <div className="grid lg:grid-cols-2 gap-12 items-start">
               <div>
                 <div className="inline-block px-3 py-1 bg-sage/10 rounded-full text-sage text-sm mb-4">01</div>
-                <h3 className="text-3xl font-light mb-4">Programas Online</h3>
-                <h4 className="text-xl text-sage mb-6">Silencie — Jornada de 21 dias</h4>
+                <h3 className="text-3xl font-light mb-4">Silencie — Jornada de 21 dias</h3>
                 <p className="text-text-muted text-lg mb-6 leading-relaxed">
                   Programa estruturado em cinco fases:
                 </p>
@@ -717,7 +729,7 @@ export default function Home() {
         </div>
 
         <div className="relative mx-auto max-w-3xl px-6 text-center">
-          <h2 className="text-3xl md:text-4xl lg:text-5xl font-light text-white leading-relaxed mb-6">
+          <h2 className="text-3xl md:text-4xl lg:text-5xl font-light text-white leading-relaxed mb-6 whitespace-nowrap">
             O que você precisa não é fazer mais.
           </h2>
           <p className="text-2xl md:text-3xl font-light text-white/70 mb-12">
