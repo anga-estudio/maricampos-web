@@ -1,11 +1,54 @@
+"use client";
+
 import Image from "next/image";
+import { useState, useRef, useEffect, useCallback } from "react";
 
 const WHATSAPP_URL = "https://wa.me/5564992463702";
 const INSTAGRAM_URL = "https://www.instagram.com/maricamposyogi";
 
 export default function Home() {
+  const audioRef = useRef<HTMLAudioElement>(null);
+  const [isPlaying, setIsPlaying] = useState(false);
+  const [hasInteracted, setHasInteracted] = useState(false);
+
+  const startAudio = useCallback(() => {
+    if (hasInteracted) return;
+    setHasInteracted(true);
+    const audio = audioRef.current;
+    if (audio) {
+      audio.volume = 0.3;
+      audio.play().then(() => setIsPlaying(true)).catch(() => {});
+    }
+  }, [hasInteracted]);
+
+  useEffect(() => {
+    const handler = () => startAudio();
+    window.addEventListener("scroll", handler, { once: true });
+    window.addEventListener("click", handler, { once: true });
+    window.addEventListener("touchstart", handler, { once: true });
+    return () => {
+      window.removeEventListener("scroll", handler);
+      window.removeEventListener("click", handler);
+      window.removeEventListener("touchstart", handler);
+    };
+  }, [startAudio]);
+
+  const toggleAudio = () => {
+    const audio = audioRef.current;
+    if (!audio) return;
+    if (isPlaying) {
+      audio.pause();
+      setIsPlaying(false);
+    } else {
+      audio.volume = 0.3;
+      audio.play().then(() => setIsPlaying(true)).catch(() => {});
+    }
+  };
+
   return (
     <div className="min-h-screen bg-background">
+      <audio ref={audioRef} src="/audio/water-ambient.mp3?v=5" loop preload="auto" />
+
       {/* Header */}
       <header className="fixed top-0 left-0 right-0 z-50 bg-background/80 backdrop-blur-md">
         <nav className="mx-auto max-w-6xl px-6 py-4 flex items-center justify-between">
@@ -19,142 +62,145 @@ export default function Home() {
             />
           </a>
 
-          <ul className="hidden md:flex items-center gap-8 text-sm font-medium">
-            <li>
-              <a
-                href="#sobre"
-                className="text-foreground/60 hover:text-sage transition-colors"
-              >
-                Sobre
-              </a>
-            </li>
-            <li>
-              <a
-                href="#servicos"
-                className="text-foreground/60 hover:text-sage transition-colors"
-              >
-                Experiências
-              </a>
-            </li>
-            <li>
-              <a
-                href="#para-quem"
-                className="text-foreground/60 hover:text-sage transition-colors"
-              >
-                Para quem
-              </a>
-            </li>
-            <li>
-              <a
-                href={WHATSAPP_URL}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="bg-sage text-white px-5 py-2 rounded-full hover:bg-sage-dark transition-colors"
-              >
-                Fale comigo
-              </a>
-            </li>
-          </ul>
+          <div className="flex items-center gap-4">
+            {/* Audio toggle */}
+            <button
+              onClick={toggleAudio}
+              className="w-10 h-10 rounded-full border border-sage/20 flex items-center justify-center text-sage hover:bg-sage/5 transition-colors"
+              aria-label={isPlaying ? "Pausar som" : "Tocar som"}
+            >
+              {isPlaying ? (
+                <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15.536 8.464a5 5 0 010 7.072M17.95 6.05a8 8 0 010 11.9M6.5 8.8h2.4L12 5.5v13l-3.1-3.3H6.5a.8.8 0 01-.8-.8v-4.8a.8.8 0 01.8-.8z" />
+                </svg>
+              ) : (
+                <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6.5 8.8h2.4L12 5.5v13l-3.1-3.3H6.5a.8.8 0 01-.8-.8v-4.8a.8.8 0 01.8-.8z" />
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 14l-4-4m0 4l4-4" />
+                </svg>
+              )}
+            </button>
 
-          {/* Mobile menu button */}
-          <a
-            href={WHATSAPP_URL}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="md:hidden bg-sage text-white px-4 py-2 rounded-full text-sm hover:bg-sage-dark transition-colors"
-          >
-            Fale comigo
-          </a>
+            <ul className="hidden md:flex items-center gap-8 text-sm font-medium">
+              <li>
+                <a
+                  href="#sobre"
+                  className="text-foreground/60 hover:text-sage transition-colors"
+                >
+                  Sobre
+                </a>
+              </li>
+              <li>
+                <a
+                  href="#servicos"
+                  className="text-foreground/60 hover:text-sage transition-colors"
+                >
+                  Experiências
+                </a>
+              </li>
+              <li>
+                <a
+                  href="#para-quem"
+                  className="text-foreground/60 hover:text-sage transition-colors"
+                >
+                  Para quem
+                </a>
+              </li>
+              <li>
+                <a
+                  href={WHATSAPP_URL}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="bg-sage text-white px-5 py-2 rounded-full hover:bg-sage-dark transition-colors"
+                >
+                  Fale comigo
+                </a>
+              </li>
+            </ul>
+
+            {/* Mobile menu button */}
+            <a
+              href={WHATSAPP_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="md:hidden bg-sage text-white px-4 py-2 rounded-full text-sm hover:bg-sage-dark transition-colors"
+            >
+              Fale comigo
+            </a>
+          </div>
         </nav>
       </header>
 
       {/* Hero Section */}
       <section className="min-h-screen flex items-center relative overflow-hidden">
-        {/* Background gradient */}
-        <div className="absolute inset-0 bg-gradient-to-br from-background via-background to-cream" />
+        {/* Video background */}
+        <video
+          autoPlay
+          muted
+          loop
+          playsInline
+          className="absolute inset-0 w-full h-full object-cover"
+        >
+          <source src="/videos/water-bg.mp4?v=5" type="video/mp4" />
+        </video>
 
-        {/* Decorative line */}
-        <div className="absolute left-1/2 top-0 bottom-0 w-px bg-sage/5" />
+        {/* Dark overlay for text readability */}
+        <div className="absolute inset-0 bg-black/50" />
 
-        <div className="relative z-10 mx-auto max-w-6xl px-6 w-full">
-          <div className="grid lg:grid-cols-2 gap-12 items-center">
-            {/* Left - Text */}
-            <div className="order-2 lg:order-1">
-              <div className="inline-block px-4 py-1.5 bg-sage/10 rounded-full text-sage text-sm mb-8">
-                Yoga, Meditação & Transformação
-              </div>
+        <div className="relative z-10 mx-auto max-w-4xl px-6 w-full text-center">
+          <div className="inline-block px-4 py-1.5 bg-white/10 backdrop-blur-sm rounded-full text-white/80 text-sm mb-8 border border-white/10">
+            Yoga, Meditação & Transformação
+          </div>
 
-              <h1 className="text-6xl md:text-7xl lg:text-8xl font-light tracking-tight leading-[0.9] mb-8">
-                Mari
-                <br />
-                <span className="text-sage">Campos</span>
-              </h1>
+          <h1 className="text-6xl md:text-7xl lg:text-8xl font-light tracking-tight leading-[0.9] mb-8 text-white">
+            Mari
+            <br />
+            <span className="text-white/70">Campos</span>
+          </h1>
 
-              <div className="space-y-2 text-xl text-text-muted max-w-md leading-relaxed mb-10">
-                <p className="italic text-sage/80">Voltar para si.</p>
-                <p className="italic text-sage/80">Respirar com consciência.</p>
-                <p className="italic text-sage/80">Viver com presença.</p>
-              </div>
+          <div className="space-y-2 text-xl max-w-md mx-auto leading-relaxed mb-10">
+            <p className="italic text-white/60">Voltar para si.</p>
+            <p className="italic text-white/60">Respirar com consciência.</p>
+            <p className="italic text-white/60">Viver com presença.</p>
+          </div>
 
-              <p className="text-lg text-text-muted max-w-md leading-relaxed mb-10">
-                Professora de yoga, meditação e facilitadora de jornadas de transformação para mulheres que desejam desacelerar, se reconectar e florescer com consciência.
-              </p>
+          <p className="text-lg text-white/50 max-w-lg mx-auto leading-relaxed mb-10">
+            Professora de yoga, meditação e facilitadora de jornadas de transformação para mulheres que desejam desacelerar, se reconectar e florescer com consciência.
+          </p>
 
-              <div className="flex items-center gap-6">
-                <a
-                  href="#sobre"
-                  className="group inline-flex items-center gap-3 bg-sage text-white px-7 py-4 rounded-full hover:bg-sage-dark transition-all"
-                >
-                  Conhecer
-                  <svg
-                    className="w-4 h-4 group-hover:translate-x-1 transition-transform"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    stroke="currentColor"
-                  >
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
-                  </svg>
-                </a>
-                <a
-                  href={INSTAGRAM_URL}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="w-12 h-12 rounded-full border border-sage/20 flex items-center justify-center text-sage hover:bg-sage/5 transition-colors"
-                  aria-label="Instagram"
-                >
-                  <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
-                    <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
-                  </svg>
-                </a>
-              </div>
-            </div>
-
-            {/* Right - Photo */}
-            <div className="order-1 lg:order-2 flex justify-center lg:justify-end">
-              <div className="relative">
-                {/* Main image container */}
-                <div className="w-80 h-[26rem] md:w-96 md:h-[32rem] rounded-[2rem] overflow-hidden relative">
-                  <Image
-                    src="/photo.svg"
-                    alt="Mari Campos"
-                    fill
-                    className="object-cover"
-                    priority
-                  />
-                </div>
-
-                {/* Decorative elements */}
-                <div className="absolute -z-10 -bottom-4 -right-4 w-full h-full border border-sage/20 rounded-[2rem]" />
-                <div className="absolute -z-20 -bottom-8 -right-8 w-full h-full bg-sage/5 rounded-[2rem]" />
-              </div>
-            </div>
+          <div className="flex items-center justify-center gap-6">
+            <a
+              href="#sobre"
+              className="group inline-flex items-center gap-3 bg-white/20 backdrop-blur-sm text-white px-7 py-4 rounded-full hover:bg-white/30 transition-all border border-white/10"
+            >
+              Conhecer
+              <svg
+                className="w-4 h-4 group-hover:translate-x-1 transition-transform"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+              </svg>
+            </a>
+            <a
+              href={INSTAGRAM_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="w-12 h-12 rounded-full border border-white/20 flex items-center justify-center text-white/70 hover:bg-white/10 transition-colors"
+              aria-label="Instagram"
+            >
+              <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+              </svg>
+            </a>
           </div>
         </div>
 
         {/* Scroll hint */}
         <div className="absolute bottom-8 left-1/2 -translate-x-1/2">
-          <div className="w-5 h-8 border border-sage/30 rounded-full flex justify-center">
-            <div className="w-1 h-2 bg-sage/40 rounded-full mt-1.5 animate-pulse" />
+          <div className="w-5 h-8 border border-white/30 rounded-full flex justify-center">
+            <div className="w-1 h-2 bg-white/40 rounded-full mt-1.5 animate-pulse" />
           </div>
         </div>
       </section>
@@ -238,13 +284,6 @@ export default function Home() {
                 </div>
               </div>
 
-              <div className="mt-10 p-6 bg-sage/5 rounded-2xl border border-sage/10">
-                <p className="text-text-muted text-lg italic leading-relaxed">
-                  Não é sobre performance. É sobre pertencimento.
-                  <br />
-                  É sobre lembrar quem você é.
-                </p>
-              </div>
             </div>
           </div>
         </div>
