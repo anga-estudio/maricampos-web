@@ -390,7 +390,7 @@ export default function Home() {
                   Programa estruturado em cinco fases:
                 </p>
                 <div className="flex flex-wrap gap-3 mb-8">
-                  {["Despertar", "Esvaziar", "Cultivar", "Enraizar", "Florescer"].map((fase) => (
+                  {["Yoga", "Despertar", "Esvaziar", "Cultivar", "Enraizar", "Florescer"].map((fase) => (
                     <span key={fase} className="px-4 py-2 bg-sage/10 text-sage rounded-full text-sm">{fase}</span>
                   ))}
                 </div>
