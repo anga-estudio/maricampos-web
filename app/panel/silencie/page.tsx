@@ -1,6 +1,7 @@
 import { redirect } from "next/navigation";
 import { createClient } from "@/lib/supabase/server";
 import Sidebar from "../sidebar";
+import SilencieEditor from "./editor";
 
 export default async function SilenciePage() {
   const supabase = await createClient();
@@ -16,19 +17,14 @@ export default async function SilenciePage() {
     <div className="flex min-h-screen bg-cream">
       <Sidebar email={user.email!} />
 
-      <main className="flex-1 p-8">
+      <main className="flex-1 p-8 overflow-y-auto">
         <h2 className="text-2xl font-semibold text-sage-dark mb-2">
           Silencie
         </h2>
         <p className="text-text-muted mb-8">
-          Gerencie o conteúdo do projeto Silencie.
+          Gerencie o conteúdo do site silencie.maricampos.co
         </p>
-
-        <div className="bg-white rounded-xl shadow-sm border border-sand p-6">
-          <p className="text-text-muted text-sm">
-            As funcionalidades de gerenciamento serão adicionadas aqui.
-          </p>
-        </div>
+        <SilencieEditor />
       </main>
     </div>
   );
