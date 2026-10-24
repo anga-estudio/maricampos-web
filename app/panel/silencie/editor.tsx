@@ -484,6 +484,7 @@ function TestimonialsTab({
 }) {
   const [list, setList] = useState<Testimonial[]>(items);
   const [uploading, setUploading] = useState<number | null>(null);
+  const [uploadError, setUploadError] = useState<string | null>(null);
 
   const update = (i: number, field: keyof Testimonial, v: string) =>
     setList((prev) =>
@@ -506,12 +507,19 @@ function TestimonialsTab({
       .from("images")
       .upload(path, file, { upsert: true });
 
-    if (!error) {
-      const {
-        data: { publicUrl },
-      } = supabase.storage.from("images").getPublicUrl(path);
-      update(i, "photo", publicUrl);
+    if (error) {
+      setUploadError(
+        `Não foi possível enviar a foto: ${error.message}. Verifique se o bucket "images" existe no Supabase.`
+      );
+      setUploading(null);
+      return;
     }
+
+    const {
+      data: { publicUrl },
+    } = supabase.storage.from("images").getPublicUrl(path);
+    update(i, "photo", publicUrl);
+    setUploadError(null);
     setUploading(null);
   };
 
@@ -523,6 +531,12 @@ function TestimonialsTab({
           Depoimentos com nome, foto e texto.
         </p>
       </div>
+
+      {uploadError && (
+        <p className="text-sm text-red-600 bg-red-50 border border-red-200 rounded-lg p-3">
+          {uploadError}
+        </p>
+      )}
 
       <div className="space-y-4">
         {list.map((item, i) => (
